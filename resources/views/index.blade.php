@@ -126,7 +126,7 @@
               area: 58,
               quartos: 2,
               vagas: 1,
-              capa: "https://media.discordapp.net/attachments/1210712388647649292/1412906066362105887/image.png?ex=68b9fed0&is=68b8ad50&hm=4a4eeeae84f087e78dbcf5070fee505a40100dd73d093737e82b265b15a5d499&=&format=webp&quality=lossless",
+              capa: "https://media.discordapp.net/attachments/1210712388647649292/1412906066362105887/image.png?ex=68c09650&is=68bf44d0&hm=5dffcbfcd241cce0e65eac7f4cb88753da0855565969800e8acb0c5e6d87ac13&=&format=webp&quality=lossless",
             },
             {
               id: 2,
@@ -408,7 +408,7 @@
               <a href="sobre">Sobre Nós</a><br />
               <a href="empreendimentos">Empreendimentos</a><br />
               <a href="reservas">Reservas</a><br />
-              
+              <a href="terraplenagem">Terraplenagem</a><br />
               <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações.">Contato</a>
             </p>
           </div>
@@ -443,7 +443,7 @@
         </div>
       </section> -->
 
-      <section
+      <!-- <section
         class="section"
         id="ig"
         style="background: linear-gradient(180deg, #f7f9fe, transparent)"
@@ -484,7 +484,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </footer>
 
     <a

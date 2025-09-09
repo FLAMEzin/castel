@@ -41,3 +41,12 @@ Route::get('/terraplenagem', function () {
 Route::get('/simulador', function () {
     return view('simulador');
 })->name('simulador');
+
+Route::get('/simulador', function () {
+    return view('simulador');
+})->name('simulador');
+
+
+Route::get('/empreendimento', function () {
+    return view('empreendimento');
+})->name('empreendimento');
