@@ -1,181 +1,207 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sobre Nós • Castel Construções e Incorporações</title>
-  <meta name="description" content="História, missão, visão, valores e diferenciais da Castel. Transparência, qualidade e foco no cliente no RN." />
-  <meta name="theme-color" content="#143a7b" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <meta property="og:title" content="Sobre Nós • Castel" />
-  <meta property="og:description" content="Conheça a história, missão, visão, valores e diferenciais da Castel." />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Castel" />
+@extends('layouts.app')
+@section('title','Sobre Nós • Castel Construções e Incorporações')
+@section('description','Conheça a história, cultura, missão, visão e valores da Castel — foco no cliente, qualidade e exclusividade.')
 
-  @verbatim
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Castel Construções e Incorporações",
-    "url": "https://exemplo-castel.com.br/",
-    "logo": "https://exemplo-castel.com.br/img/Logo.png",
-    "sameAs": ["https://www.instagram.com/castelconstrutora"]
-  }
-  </script>
-  @endverbatim
-</head>
-<body>
-<header class="header" role="banner">
-  <div class="topbar" aria-label="Informações de contato">
-    <div class="container">
-      <span>Atendimento 24/7</span>
-      <span class="sep">•</span>
-      <a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." style="color:#fff;">(84) 98800-4885</a>
-      <span class="sep">•</span>
-      <a href="mailto:contato@castelconstrutora.com.br" style="color:#fff;">contato@castelconstrutora.com.br</a>
-    </div>
-  </div>
-  <div class="container navbar" role="navigation" aria-label="Principal">
-    <a class="brand" href="index" aria-label="Castel - Início">
-      <img src="/img/Logo.png" width="150" alt="Castel Logo" />
-    </a>
-    <nav class="nav" aria-label="Navegação do site">
-      <a href="index">Início</a>
-      <a href="sobre" aria-current="page">Sobre Nós</a>
-      <a href="empreendimentos">Empreendimentos</a>
-      <a href="reservas">Reservas</a>
-      <a href="avulsos">Avulsos</a>
-      <a href="terraplenagem">Castel Terraplenagem</a>
-      <a href="simulador">Simulador</a>
-      <a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">Contato</a>
-      <a class="cta" href="https://www.instagram.com/castelconstrutora" target="_blank" rel="noopener">Instagram</a>
-    </nav>
-    <button class="hamburger" aria-label="Abrir menu"><span></span></button>
-  </div>
-</header>
+@section('content')
 
-{{-- HERO — vídeo + headline --}}
-<section class="hero" role="region" aria-label="Apresentação">
-  <video class="hero-media" src="media/Institucional.mp4" autoplay muted loop playsinline poster="https://cdn.discordapp.com/attachments/1210712388647649292/1412905261210927275/image.png?ex=68b9fe10&is=68b8ac90&hm=11c8e2f0b79573c511fd4cd5cb73b7bf4b5428aff543069374930895e5b55682&"></video>
+<!-- Hero com vídeo e mensagem principal -->
+<section class="hero" role="region" aria-label="Apresentação institucional">
+  <video src="/media/Institucional.mp4" autoplay muted loop playsinline></video>
   <div class="content">
-    <h1>Construímos com <span style="color:var(--brand-red)">segurança</span> e <span style="color:#a3c9ff">excelência</span>.</h1>
-    <p class="lead">Mais de uma década transformando projetos em lares, com transparência, prazo e atendimento humano.</p>
+    <h1>Construindo confiança, entregando qualidade</h1>
+    <p class="lead">
+      Há mais de uma década transformando terrenos em lares, com transparência, prazo e foco total no cliente.
+    </p>
     <div class="actions">
-      <a class="cta" href="empreendimentos">Ver empreendimentos</a>
-      <a class="cta" style="background:var(--brand-blue)" href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20quero%20saber%20mais%20sobre%20um%20empreendimento.">Falar no WhatsApp</a>
+      <a class="cta" href="/empreendimentos">Conheça nossos empreendimentos</a>
+      <a class="cta" style="background:var(--brand-blue)" href="/contato">Fale com a gente</a>
     </div>
   </div>
 </section>
 
-{{-- NÚMEROS/PROVAS SOCIAIS --}}
-<section class="section reveal" aria-label="Nossos números">
+<!-- KPIs -->
+<section class="section">
   <div class="container">
-    <div class="grid cols-4" style="text-align:center;">
-      <div class="card"><div class="body">
-        <div class="stat" data-target="10">0</div>
-        <p class="muted">anos de mercado</p>
-      </div></div>
-      <div class="card"><div class="body">
-        <div class="stat" data-target="30">0</div>
-        <p class="muted">obras entregues</p>
-      </div></div>
-      <div class="card"><div class="body">
-        <div class="stat" data-target="45000">0</div>
-        <p class="muted">m² construídos</p>
-      </div></div>
-      <div class="card"><div class="body">
-        <div class="stat" data-suffix="%" data-target="98">0</div>
-        <p class="muted">satisfação dos clientes</p>
-      </div></div>
+    <div class="kpis">
+      <div class="kpi reveal">
+        <div class="num" data-kpi="12">12+</div>
+        <div class="muted">anos de história</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="num" data-kpi="35">35+</div>
+        <div class="muted">obras entregues</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="num" data-kpi="500">500+</div>
+        <div class="muted">famílias atendidas</div>
+      </div>
+      <div class="kpi reveal">
+        <div class="num" data-kpi="98">98%</div>
+        <div class="muted">de satisfação</div>
+      </div>
     </div>
   </div>
 </section>
 
-{{-- MISSÃO, VISÃO, VALORES --}}
-<section class="section" aria-label="Missão, visão e valores" style="background:var(--brand-gray);">
+<!-- Missão, Visão, Valores -->
+<section class="section" style="background:var(--brand-gray)">
   <div class="container">
-    <div class="grid cols-3">
-      <div class="card reveal">
+    <h2>Quem somos</h2>
+    <p class="muted" style="max-width:70ch">
+      A Castel nasceu com o propósito de transformar sonhos em endereços. Unimos engenharia, gestão e atendimento humano
+      para entregar obras seguras, funcionais e com estética que valoriza cada detalhe.
+    </p>
+    <div class="grid cols-3" style="margin-top:1rem">
+      <article class="card reveal">
+        <img class="thumb" alt="Missão" src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=1200&auto=format&fit=crop">
         <div class="body">
-          <h3 style="margin:.25rem 0;">Missão</h3>
-          <p>Construir com excelência, priorizando a segurança, qualidade e a satisfação dos clientes.</p>
+          <h3 style="margin:.25rem 0">Missão</h3>
+          <p>Construir com excelência, respeitando prazos, orçamento e a experiência do cliente do início ao fim.</p>
         </div>
-      </div>
-      <div class="card reveal">
+      </article>
+      <article class="card reveal">
+        <img class="thumb" alt="Visão" src="https://images.unsplash.com/photo-1529429612779-c8e40ef2f36e?q=80&w=1200&auto=format&fit=crop">
         <div class="body">
-          <h3 style="margin:.25rem 0;">Visão</h3>
-          <p>Ser referência regional em incorporação e obras que valorizam pessoas e cidades.</p>
+          <h3 style="margin:.25rem 0">Visão</h3>
+          <p>Ser referência regional em incorporação e engenharia, reconhecida por qualidade e transparência.</p>
         </div>
-      </div>
-      <div class="card reveal">
+      </article>
+      <article class="card reveal">
+        <img class="thumb" alt="Valores" src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop">
         <div class="body">
-          <h3 style="margin:.25rem 0;">Valores</h3>
-          <ul style="margin:0;">
+          <h3 style="margin:.25rem 0">Valores</h3>
+          <ul style="margin:.25rem 0 0; padding-left:1rem">
             <li>Ética e transparência</li>
+            <li>Segurança e qualidade</li>
             <li>Compromisso com prazos</li>
-            <li>Segurança do trabalho</li>
-            <li>Respeito ao meio ambiente</li>
+            <li>Respeito às pessoas e ao meio ambiente</li>
           </ul>
         </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section class="section">
+  <div class="container">
+    <h2>Nossos diferenciais</h2>
+    <div class="grid cols-4" style="margin-top:1rem">
+      <div class="card reveal">
+        <div class="body">
+          <strong>Atendimento humano</strong>
+          <p class="muted">Do primeiro contato à entrega das chaves, com transparência e proximidade.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="body">
+          <strong>Projeto inteligente</strong>
+          <p class="muted">Plantas funcionais, materiais de qualidade e estética atemporal.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="body">
+          <strong>Prazo e previsibilidade</strong>
+          <p class="muted">Gestão de obra com responsabilidade e comunicação clara.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="body">
+          <strong>Pós-obra presente</strong>
+          <p class="muted">Suporte técnico e documentação em dia. Confiança que continua.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-{{-- DIFERENCIAIS --}}
-<section class="section reveal" aria-label="Diferenciais">
+<!-- Linha do tempo -->
+<section class="section" style="background:var(--brand-gray)">
   <div class="container">
-    <h2 style="margin-top:0;">Nossos diferenciais</h2>
-    <div class="grid cols-3">
-      <div class="card"><div class="body">
-        <strong>Engenharia de ponta</strong>
-        <p class="muted">Métodos construtivos atualizados, materiais certificados e controle de qualidade em todas as etapas.</p>
-      </div></div>
-      <div class="card"><div class="body">
-        <strong>Atendimento humano</strong>
-        <p class="muted">Acompanhamento do cliente do pré ao pós-obra, com canais rápidos (WhatsApp e Instagram).</p>
-      </div></div>
-      <div class="card"><div class="body">
-        <strong>Condições reais</strong>
-        <p class="muted">Parcerias com instituições financeiras e <a href="simulador">simulador</a> próprio para facilitar a compra.</p>
-      </div></div>
+    <h2>Nossa trajetória</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr; align-items:start">
+      <div class="reveal">
+        <ul style="list-style:none; padding:0; margin:0">
+          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
+            <span class="badge blue" aria-hidden="true">2013</span>
+            <div>
+              <strong>Fundação da Castel</strong>
+              <p class="muted" style="margin:.25rem 0 0">Primeiras obras residenciais com foco em qualidade construtiva.</p>
+            </div>
+          </li>
+          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
+            <span class="badge blue" aria-hidden="true">2017</span>
+            <div>
+              <strong>Expansão e novos bairros</strong>
+              <p class="muted" style="margin:.25rem 0 0">Portfólio cresce com produtos para diferentes perfis.</p>
+            </div>
+          </li>
+          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
+            <span class="badge blue" aria-hidden="true">2021</span>
+            <div>
+              <strong>Processos digitais</strong>
+              <p class="muted" style="margin:.25rem 0 0">Gestão integrada, mais agilidade e previsibilidade de obra.</p>
+            </div>
+          </li>
+          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
+            <span class="badge blue" aria-hidden="true">Hoje</span>
+            <div>
+              <strong>Casas e apartamentos que viram histórias</strong>
+              <p class="muted" style="margin:.25rem 0 0">Seguimos entregando com seriedade e foco no cliente.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="card">
+          <img class="thumb" alt="Obras Castel" src="https://images.unsplash.com/photo-1501876725168-00c445821c9e?q=80&w=1600&auto=format&fit=crop">
+          <div class="body">
+            <strong>Construção que inspira</strong>
+            <p class="muted" style="margin:0">Equipe técnica experiente, fornecedores homologados e controle de qualidade em todas as etapas.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-{{-- LINHA DO TEMPO --}}
-<section class="section reveal" aria-label="Nossa história">
+<!-- Time & Cultura -->
+<section class="section">
   <div class="container">
-    <h2>De onde viemos</h2>
-    <ul class="timeline" style="list-style:none; padding:0; margin:1rem 0 0;">
-      <li class="card"><div class="body">
-        <strong>2014 — Fundação</strong>
-        <p class="muted" style="margin:.25rem 0 0;">Início das operações e das primeiras obras residenciais.</p>
-      </div></li>
-      <li class="card"><div class="body">
-        <strong>2018 — Expansão</strong>
-        <p class="muted" style="margin:.25rem 0 0;">Entrada em novos municípios do RN e consolidação do time técnico.</p>
-      </div></li>
-      <li class="card"><div class="body">
-        <strong>2022 — Portfólio completo</strong>
-        <p class="muted" style="margin:.25rem 0 0;">Empreendimentos de diversos padrões e soluções em terraplenagem.</p>
-      </div></li>
-      <li class="card"><div class="body">
-        <strong>Hoje — Foco no cliente</strong>
-        <p class="muted" style="margin:.25rem 0 0;">Atendimento omnichannel e obras com alto padrão de qualidade.</p>
-      </div></li>
-    </ul>
+    <h2>Time & cultura</h2>
+    <div class="grid cols-3" style="margin-top:1rem">
+      <div class="card reveal">
+        <div class="body">
+          <strong>Liderança técnica</strong>
+          <p class="muted">Engenharia com experiência de campo e obra — decisões assertivas e seguras.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="body">
+          <strong>Cliente no centro</strong>
+          <p class="muted">Atendimento consultivo, comunicação clara e compromisso com a experiência.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="body">
+          <strong>Parcerias sólidas</strong>
+          <p class="muted">Rede de fornecedores e especialistas, garantindo padrão e prazo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:1rem">
+      <a class="btn" href="/empreendimentos">Ver portfólio</a>
+      <a class="btn secondary" href="https://www.instagram.com/castelconstrutora" target="_blank" rel="noopener">Ver bastidores no Instagram</a>
+    </div>
   </div>
 </section>
 
-<!-- {{-- SELos/CONFIANÇA --}}
-<section class="section reveal" aria-label="Selos de confiança" style="background:linear-gradient(180deg, #f7f9fe, transparent);">
+<!-- Selos / Confiança -->
+<!-- <section class="section reveal" aria-label="Selos de confiança">
   <div class="container">
-    <div class="trustbar" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <h2>Confiança de quem constrói com a gente</h2>
+    <div class="trustbar" style="margin-top:.5rem">
       <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=CREA" alt="CREA" />
       <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=CAIXA" alt="CAIXA" />
       <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=Selo+Qualidade" alt="Selo de Qualidade" />
@@ -184,88 +210,33 @@
   </div>
 </section> -->
 
-{{-- CTA FINAL --}}
-<section class="section">
-  <div class="container">
-    <div class="card reveal" role="region" aria-label="Entre em contato">
-      <div class="body" style="display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-        <div>
-          <strong style="font-size:1.2rem;">Quer conversar com a gente?</strong>
-          <p class="muted" style="margin:.25rem 0 0;">Fale pelo WhatsApp ou conheça nossos empreendimentos.</p>
-        </div>
-        <div class="actions" style="display:flex; gap:.5rem; flex-wrap:wrap;">
-          <a class="btn red" href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" href="empreendimentos">Ver empreendimentos</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+@endsection
 
-<footer class="footer section" role="contentinfo">
-  <div class="container">
-    <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
-      <div>
-        <a class="brand" href="index"><img src="/img/Logo.png" width="150" alt="Castel Logo" /></a>
-        <p class="muted" style="max-width:48ch;">Construções e Incorporações. Qualidade, transparência e ética em cada empreendimento.</p>
-      </div>
-      <div>
-        <h3 style="margin:.25rem 0;">Contato</h3>
-        <p>
-          <a href="mailto:contato@castelconstrutora.com.br">contato@castelconstrutora.com.br</a><br>
-          <a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">(84) 98800-4885</a>
-        </p>
-        <p>Logradouro: Rua Seis de Janeiro, 1837<br/>
-           Bairro: Santo Antonio<br/>
-           Município/UF: Mossoró, RN</p>
-      </div>
-      <div>
-        <h3 style="margin:.25rem 0;">Navegação</h3>
-        <p>
-          <a href="sobre">Sobre Nós</a><br />
-          <a href="empreendimentos">Empreendimentos</a><br />
-          <a href="reservas">Reservas</a><br />
-          <a href="terraplenagem">Terraplenagem</a><br />
-          <a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">Contato</a>
-        </p>
-      </div>
-    </div>
-    <div class="subfooter">
-      © <span id="year"></span> Castel Construções e Incorporações — Todos os direitos reservados.
-    </div>
-  </div>
-</footer>
-
-<a id="wa-fab" class="whatsapp-fab" aria-label="Fale no WhatsApp" target="_blank" rel="noopener"
-   href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0012 0C5.39 0 .03 5.36.03 12a11.9 11.9 0 001.6 6L0 24l6.2-1.62a11.9 11.9 0 005.8 1.48h.01c6.61 0 11.97-5.36 11.97-12 0-3.2-1.25-6.2-3.46-8.38zM12 22.03h-.01a9.96 9.96 0 01-5.08-1.4l-.36-.21-3.68.96.98-3.58-.24-.37A9.97 9.97 0 012.03 12C2.03 6.5 6.5 2.03 12 2.03z"/></svg>
-</a>
-
-<script src="main.js"></script>
+@section('scripts')
 <script>
-// contador suave dos números
-(function(){
-  const els = document.querySelectorAll('.stat');
-  const ease = t => 1 - Math.pow(1 - t, 3);
-  function anim(el){
-    const target = +el.dataset.target || 0;
-    const suffix = el.dataset.suffix || '';
-    const dur = 1200; let t0 = null;
+  // animação simples dos KPIs (contagem)
+  const easeOut = t => 1 - Math.pow(1 - t, 4);
+  function animateCount(el){
+    const target = Number(el.getAttribute('data-kpi') || 0);
+    const start = performance.now();
+    const dur = 900;
     function step(ts){
-      if(!t0) t0 = ts;
-      const p = Math.min(1, (ts - t0)/dur);
-      const val = Math.round(ease(p) * target);
-      el.textContent = val.toLocaleString('pt-BR') + suffix;
+      const p = Math.min(1, (ts - start)/dur);
+      const v = Math.floor(easeOut(p) * target);
+      el.textContent = target >= 100 ? v + (target >= 100 ? (target % 1 ? '' : '+') : '') : v + (target >= 10 ? '+' : '');
       if(p < 1) requestAnimationFrame(step);
+      else el.textContent = target + (target >= 10 ? '+' : '');
     }
     requestAnimationFrame(step);
   }
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting){ anim(e.target); obs.unobserve(e.target); } });
-  }, { threshold: .4 });
-  els.forEach(el => obs.observe(el));
-})();
-document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.kpi .num').forEach(animateCount);
+
+  // revelar elementos com .reveal ao rolar
+  const ro = new IntersectionObserver(entries=>{
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    }
+  }, {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
-</body>
-</html>
+@endsection

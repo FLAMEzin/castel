@@ -192,3 +192,52 @@ button.btn.red{background:var(--brand-red)}
 @media (prefers-reduced-motion: reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* ======= HOTFIX contra vazamento horizontal ======= */
+
+/* 1) Tudo fluido no eixo X */
+html, body { overflow-x: clip; } /* melhor que hidden (não cria nova layer) */
+
+/* 2) Mídias 100% responsivas */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+iframe { display:block; border:0; }
+
+/* 3) Se alguma palavra/URL enorme estourar caixa, quebra bonito */
+.container, .card, p, a, h1, h2, h3, h4 {
+  overflow-wrap: anywhere;
+}
+
+/* 4) Grids com inline style de múltiplas colunas na HOME
+      (ex.: style="grid-template-columns: 1.2fr 1fr")
+      No mobile, força stackar em 1 coluna. */
+@media (max-width: 960px) {
+  .grid[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 5) Imagens/heróis não passam da tela nem geram “saltos” */
+.hero { overflow: hidden; }
+.card .thumb { max-width:100%; }
+
+/* 6) Evita que paddings somados a 100% “estourem” */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 7) Trustbar/galerias nunca ultrapassam */
+.trustbar { max-width: 100%; }
+.gallery { max-width: 100%; overflow: hidden; }
+
+/* 8) Navegação mobile ocupa exatamente a viewport */
+@media (max-width: 960px) {
+  .nav {
+    left: 0; right: 0; width: 100%;
+  }
+}
+
+/* 9) Se existir algo usando 100vw (não vi no teu CSS, mas por via das dúvidas) */
+.full-bleed, [style*="100vw"] {
+  max-width: 100%;
+}

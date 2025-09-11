@@ -1,17 +1,24 @@
 // ==============================
-// Castel • main.js (mínimo ok)
+// Castel • main.js
 // ==============================
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
 const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
-
 function brl(n){ return isFinite(n) ? Number(n).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}) : "-"; }
 
-// ---- Config link de detalhes: /empreendimento?slug=... (sem rota dinâmica)
-const DETAIL_BASE = "/empreendimento";
-function detailHref(item){ return `${DETAIL_BASE}?slug=${encodeURIComponent(item.slug)}`; }
+document.addEventListener("DOMContentLoaded", () => {
+  const y = $("#year"); if (y) y.textContent = new Date().getFullYear();
+  const burger = $(".hamburger"), nav = $(".nav");
+  on(burger, "click", ()=>{ nav?.classList.toggle("open"); burger.classList.toggle("open"); });
 
-// ---- Dataset com 1 único exemplo (lista -> detalhe)
+  wireInstagram();
+  pageHome();
+  pageEmpreendimentos();
+  pageEmpreendimento();
+  pageSimulador();
+});
+
+// ---------------- Dataset (exemplo mínimo) ----------------
 const EMPREENDIMENTOS = [
   {
     id: 1,
@@ -39,53 +46,93 @@ const EMPREENDIMENTOS = [
   },
 ];
 
-function statusLabel(s){ return ({lancamento:"Lançamento",em_construcao:"Em construção",avulso:"Avulso",entregue:"Entregue"}[s]||s); }
+const DETAIL_BASE = "/empreendimento";
+const statusLabel = (s)=>({lancamento:"Lançamento",em_construcao:"Em construção",avulso:"Avulso",entregue:"Entregue"}[s]||s);
+const detailHref = (item)=> `${DETAIL_BASE}?slug=${encodeURIComponent(item.slug)}`;
 
-// ---- Header básico
-document.addEventListener("DOMContentLoaded", () => {
-  const y = $("#year");
-  if (y) y.textContent = new Date().getFullYear();
-  const burger = $(".hamburger");
-  const nav = $(".nav");
-  on(burger, "click", ()=>{ nav?.classList.toggle("open"); burger.classList.toggle("open"); });
-});
+// ---------------- Home (cards de destaque) ----------------
+function pageHome(){
+  const grid = $("#home-cards");
+  if(!grid) return;
+  grid.innerHTML = "";
+  // pega 1-3 itens do dataset
+  EMPREENDIMENTOS.slice(0,3).forEach(it=>{
+    const el = document.createElement("article");
+    el.className = "card";
+    el.innerHTML = `
+      <a class="thumb-link" href="${detailHref(it)}" aria-label="Ver ${it.nome}">
+        <img class="thumb" src="${it.capa}" alt="Empreendimento ${it.nome}" />
+      </a>
+      <div class="body">
+        <span class="badge">${it.cidade}/${it.uf}</span>
+        <h3 style="margin:.5rem 0;">${it.nome}</h3>
+        <a class="cta" href="${detailHref(it)}">Saiba mais</a>
+      </div>`;
+    grid.appendChild(el);
+  });
+}
 
-// ---- Render da LISTA (empreendimentos.blade)
-(function listaPage(){
+// -------------- Lista (empreendimentos) -------------------
+function pageEmpreendimentos(){
   const grid = $("#grid-empreendimentos");
   if(!grid) return;
 
-  grid.innerHTML = "";
-  const it = EMPREENDIMENTOS[0];
-
-  const card = document.createElement("article");
-  card.className = "card";
-  card.innerHTML = `
-    <a class="thumb-link" href="${detailHref(it)}" aria-label="Ver ${it.nome}">
-      <img class="thumb" src="${it.capa}" alt="Empreendimento ${it.nome}" />
-    </a>
-    <div class="body">
-      <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-        <span class="badge red">${statusLabel(it.status)}</span>
-        <span class="badge">${it.cidade}/${it.uf}</span>
-        <span class="badge">${it.quartos} quartos</span>
-        <span class="badge">${it.area} m²</span>
-      </div>
-      <h3 style="margin:.5rem 0 0;">${it.nome}</h3>
-      <p class="muted" style="margin:0;">A partir de <strong>${brl(it.preco)}</strong></p>
-      <div style="margin-top:.75rem; display:flex; gap:.5rem; flex-wrap:wrap;">
-        <a class="btn" href="${detailHref(it)}">Ver detalhes</a>
-        <a class="btn red" href="https://wa.me/5584994618126?text=${encodeURIComponent(`Olá! Tenho interesse no ${it.nome}.`)}" target="_blank" rel="noopener">Tenho interesse</a>
-      </div>
-    </div>`;
-  grid.appendChild(card);
-
   const form = $("#form-filtro");
-  on(form, "input", () => { /* com 1 item, mantemos o card */ });
-})();
+  const render = (list)=>{
+    grid.innerHTML = "";
+    if (!list.length){
+      grid.innerHTML = '<p class="muted">Nenhum empreendimento encontrado.</p>';
+      return;
+    }
+    list.forEach(it=>{
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <a class="thumb-link" href="${detailHref(it)}" aria-label="Ver ${it.nome}">
+          <img class="thumb" src="${it.capa}" alt="Empreendimento ${it.nome}" />
+        </a>
+        <div class="body">
+          <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+            <span class="badge red">${statusLabel(it.status)}</span>
+            <span class="badge">${it.cidade}/${it.uf}</span>
+            <span class="badge">${it.quartos} quartos</span>
+            <span class="badge">${it.area} m²</span>
+          </div>
+          <h3 style="margin:.5rem 0 0;">${it.nome}</h3>
+          <p class="muted" style="margin:0;">A partir de <strong>${brl(it.preco)}</strong></p>
+          <div style="margin-top:.75rem; display:flex; gap:.5rem; flex-wrap:wrap;">
+            <a class="btn" href="${detailHref(it)}">Ver detalhes</a>
+            <a class="btn red" href="https://wa.me/5584994618126?text=${encodeURIComponent(`Olá! Tenho interesse no ${it.nome}.`)}" target="_blank" rel="noopener">Tenho interesse</a>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+  };
 
-// ---- Página de DETALHES (empreendimento.blade) — usa ?slug=
-(function detalhePage(){
+  function filtrar(){
+    const status = $("#f-status")?.value || "";
+    const cidade = ($("#f-cidade")?.value || "").trim().toLowerCase();
+    const min = parseInt($("#f-preco-min")?.value || "0", 10);
+    const max = parseInt($("#f-preco-max")?.value || "999999999", 10);
+    const areaMin = parseInt($("#f-area-min")?.value || "0", 10);
+    const quartos = parseInt($("#f-quartos")?.value || "0", 10);
+
+    const out = EMPREENDIMENTOS.filter(e =>
+      (status ? e.status === status : true) &&
+      (cidade ? e.cidade.toLowerCase().includes(cidade) : true) &&
+      e.preco >= min && e.preco <= max &&
+      e.area >= areaMin &&
+      (quartos ? e.quartos === quartos : true)
+    );
+    render(out);
+  }
+
+  on(form,"input",filtrar);
+  render(EMPREENDIMENTOS);
+}
+
+// -------------- Detalhe (empreendimento) ------------------
+function pageEmpreendimento(){
   const container = $("#detalhe-empreendimento");
   if(!container) return;
 
@@ -113,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `<img src="${src}" alt="Planta ${item.nome}" style="width:100%; height:220px; object-fit:cover; border-radius:12px;">`
   )).join("");
 
-  const comod = (item.comodidades||[]).map(c=>`<span class="tag">${c}</span>`).join("");
+  const comod = (item.comodidades||[]).map(c=>`<span class="tag badge">${c}</span>`).join("");
 
   const mapa = (item.coords && typeof item.coords.lat==="number")
     ? `<iframe title="Mapa ${item.nome}" loading="lazy" allowfullscreen
@@ -177,6 +224,51 @@ document.addEventListener("DOMContentLoaded", () => {
       <div>${mapa}</div>
     </section>
   `;
-})();
+}
 
-console.log("[Castel] main.js carregado em", location.pathname);
+// -------------------- Simulador ---------------------------
+function pageSimulador(){
+  const form = $("#form-simulador");
+  if(!form) return;
+  const out = $("#sim-out");
+
+  function recalc(){
+    const valor = Number(form.valor.value || 0);
+    const entrada = Number(form.entrada.value || 0);
+    const jurosAA = Number(form.juros.value || 0);
+    const meses = Number(form.meses.value || 0);
+    const pv = Math.max(valor - entrada, 0);
+    const i = (jurosAA/100) / 12;
+    if (pv <= 0 || i <= 0 || meses <= 0){
+      out.innerHTML = `<p class="muted">Preencha os campos para simular.</p>`;
+      return;
+    }
+    const parcela = pv * (i * Math.pow(1+i, meses)) / (Math.pow(1+i, meses) - 1);
+
+    out.innerHTML = `
+      <div class="card" style="padding:1rem;">
+        <h3 style="margin:.25rem 0;">Resultado da simulação</h3>
+        <p style="margin:.25rem 0;">Parcela estimada: <strong>${brl(parcela)}</strong></p>
+        <table class="table" style="margin-top:.5rem;">
+          <tr><th>Valor do imóvel</th><td>${brl(valor)}</td></tr>
+          <tr><th>Entrada</th><td>${brl(entrada)}</td></tr>
+          <tr><th>Financiado</th><td>${brl(pv)}</td></tr>
+          <tr><th>Juros a.a.</th><td>${jurosAA}%</td></tr>
+          <tr><th>Prazo</th><td>${meses} meses</td></tr>
+        </table>
+      </div>`;
+  }
+
+  on(form, "input", recalc);
+  recalc();
+}
+
+// --------------- Integração Instagram (dummy) ------------
+function wireInstagram(){
+  document.addEventListener("click", (e)=>{
+    const card = e.target.closest("[data-instagram-profile]");
+    if(!card) return;
+    const handle = card.getAttribute("data-instagram-profile");
+    window.open(`https://instagram.com/${handle}`, "_blank","noopener");
+  });
+}

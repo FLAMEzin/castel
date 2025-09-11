@@ -1,54 +1,52 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Empreendimentos • Castel</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
-<body>
-  <header class="header">
-    <div class="container navbar">
-      <a class="brand" href="/index"><img src="/img/Logo.png" width="150" alt="Castel Logo"></a>
-      <nav class="nav">
-        <a href="/index">Início</a>
-        <a href="/empreendimentos" aria-current="page">Empreendimentos</a>
-        <a href="/simulador">Simulador</a>
-      </nav>
-      <button class="hamburger" aria-label="Abrir menu"><span></span></button>
-    </div>
-  </header>
+@extends('layouts.app')
+@section('title','Empreendimentos • Castel')
+@section('description','Lançamentos, em construção, avulsos e entregues da Castel.')
 
-  <main class="section">
-    <div class="container">
-      <h1>Empreendimentos</h1>
+@section('content')
+<section class="section">
+  <div class="container">
+    <h2>Empreendimentos</h2>
+    <p class="muted">Use os filtros para encontrar o imóvel ideal.</p>
 
-      <!-- Filtros simples (não quebram o JS) -->
-      <form id="form-filtro" class="card" style="padding:1rem; margin-bottom:1rem;">
-        <div class="form-grid">
-          <div><label>Status</label>
-            <select id="f-status"><option value="">Todos</option><option value="lancamento">Lançamento</option></select>
-          </div>
-          <div><label>Cidade</label><input id="f-cidade" class="input" placeholder="Natal"></div>
-          <div><label>Preço mín.</label><input id="f-preco-min" class="input" type="number"></div>
-          <div><label>Preço máx.</label><input id="f-preco-max" class="input" type="number"></div>
-          <div><label>Metragem mín.</label><input id="f-area-min" class="input" type="number"></div>
-          <div><label>Quartos</label>
-            <select id="f-quartos"><option value="">Todos</option><option>1</option><option>2</option></select>
-          </div>
+    <form id="form-filtro" class="card" aria-label="Filtros de busca" style="padding:1rem; margin-bottom:1rem;">
+      <div class="form-grid">
+        <div>
+          <label for="f-status">Status</label>
+          <select id="f-status" name="status">
+            <option value="">Todos</option>
+            <option value="lancamento">Lançamentos</option>
+            <option value="em_construcao">Em construção</option>
+            <option value="avulso">Avulsos</option>
+            <option value="entregue">Entregues</option>
+          </select>
         </div>
-      </form>
+        <div>
+          <label for="f-cidade">Cidade</label>
+          <input id="f-cidade" class="input" placeholder="Ex.: Natal" />
+        </div>
+        <div>
+          <label for="f-preco-min">Preço mín. (R$)</label>
+          <input id="f-preco-min" class="input" type="number" min="0" step="10000" />
+        </div>
+        <div>
+          <label for="f-preco-max">Preço máx. (R$)</label>
+          <input id="f-preco-max" class="input" type="number" min="0" step="10000" />
+        </div>
+        <div>
+          <label for="f-area-min">Metragem mín. (m²)</label>
+          <input id="f-area-min" class="input" type="number" min="0" step="1" />
+        </div>
+        <div>
+          <label for="f-quartos">Quartos</label>
+          <select id="f-quartos">
+            <option value="">Todos</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+          </select>
+        </div>
+      </div>
+    </form>
 
-      <!-- Onde o JS desenha o(s) card(s) -->
-      <div id="grid-empreendimentos" class="grid cols-3" aria-live="polite"></div>
-    </div>
-  </main>
-
-  <footer class="footer section">
-    <div class="container">© <span id="year"></span> Castel</div>
-  </footer>
-
-  <script src="/main.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+    <div id="grid-empreendimentos" class="grid cols-3" aria-live="polite"></div>
+  </div>
+</section>
+@endsection
