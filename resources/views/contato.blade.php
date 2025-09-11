@@ -1,125 +1,184 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contato • Castel Construções e Incorporações</title>
-  <meta name="description" content="Fale com a Castel: endereço, telefone, WhatsApp e formulário." />
-  <meta name="theme-color" content="#143a7b">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <meta property="og:title" content="Contato • Castel">
-  <meta property="og:description" content="Fale com a Castel: endereço, telefone, WhatsApp e formulário.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Castel">
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Organization", "name": "Castel Constru\u00e7\u00f5es e Incorpora\u00e7\u00f5es", "url": "https://exemplo-castel.com.br/", "logo": "https://exemplo-castel.com.br/assets/img/logo.png", "sameAs": ["https://www.instagram.com/castelconstrutora"]}
-  </script>
-</head>
-<body>
-<header class="header" role="banner">
-  <div class="topbar" aria-label="Informações de contato">
-    <div class="container">
-      <span>Atendimento 24/7</span>
-      <span class="sep">•</span>
-      <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações." style="color: #fff">(84) 98800-4885</a>
-      <span class="sep">•</span>
-      <a href="mailto:contato@castelconstrutora.com.br" style="color:#fff;">contato@castelconstrutora.com.br</a>
-    </div>
-  </div>
-  <div class="container navbar" role="navigation" aria-label="Principal">
-    <a class="brand" href="index" aria-label="Castel - Início">
-      <img src="/img/Logo.png" width="150" alt="logo" />
-    </a>
-    <nav class="nav" aria-label="Navegação do site">
-      <a href="index">Início</a>
-      <a href="sobre">Sobre Nós</a>
-      <a href="empreendimentos">Empreendimentos</a>
-      <a href="reservas">Reservas</a>
-      <a href="avulsos">Avulsos</a>
-      <a href="terraplenagem">Castel Terraplenagem</a>
-      <a href="simulador">Simulador</a>
-      <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações.">Contato</a>
-      <a class="cta" href="https://www.instagram.com/castelconstrutora" target="_blank" rel="noopener">Instagram</a>
-    </nav>
-    <button class="hamburger" aria-label="Abrir menu"><span></span></button>
-  </div>
-</header>
+@extends('layouts.app')
+@section('title','Contato • Castel Construções e Incorporações')
+@section('description','Fale com a Castel: endereço, telefone/WhatsApp e formulário de contato.')
 
+@section('content')
 <section class="section">
   <div class="container">
-    <h2>Contato</h2>
-    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+    <h1 style="margin:0 0 .5rem;">Contato</h1>
+    <p class="muted" style="margin-top:.25rem">Diga como podemos ajudar. Respondemos rapidinho 🙂</p>
+
+    <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
+      <!-- Formulário -->
       <div>
-        <form id="form-contato" class="card" style="padding:1rem;">
+        <form id="form-contato" class="card" style="padding:1rem;" novalidate>
           <div class="form-grid">
-            <div><label>Nome</label><input class="input" name="nome" required></div>
-            <div><label>E-mail</label><input class="input" name="email" type="email" required></div>
-            <div><label>Telefone</label><input class="input" name="telefone" type="tel" required></div>
-            <div class="full"><label>Mensagem</label><textarea class="input" name="mensagem" rows="6" required></textarea></div>
-            <div class="full"><label><input type="checkbox" required> Autorizo o contato da Castel.</label></div>
+            <div class="full">
+              <label for="ct-assunto">Assunto</label>
+              <select id="ct-assunto" name="assunto" class="input" required>
+                <option value="Orçamento / Proposta">Orçamento / Proposta</option>
+                <option value="Dúvida sobre empreendimento">Dúvida sobre empreendimento</option>
+                <option value="Pós-venda / Garantia">Pós-venda / Garantia</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="ct-nome">Nome</label>
+              <input id="ct-nome" class="input" name="nome" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="ct-email">E-mail</label>
+              <input id="ct-email" class="input" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div>
+              <label for="ct-telefone">Telefone/WhatsApp</label>
+              <input id="ct-telefone" class="input" name="telefone" type="tel" inputmode="tel" autocomplete="tel" required>
+            </div>
+            <div>
+              <label for="ct-cidade">Cidade</label>
+              <input id="ct-cidade" class="input" name="cidade" placeholder="Ex.: Mossoró/RN">
+            </div>
+
+            <div class="full">
+              <label for="ct-mensagem">Mensagem</label>
+              <textarea id="ct-mensagem" class="input" name="mensagem" rows="6" required></textarea>
+            </div>
+
+            <div class="full">
+              <label><input id="ct-consent" type="checkbox" required> Autorizo o contato da Castel.</label>
+            </div>
           </div>
-          <button class="btn" type="submit">Enviar</button>
-          <p class="form-ok muted" hidden>Mensagem enviada! Em breve retornamos.</p>
+
+          <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;">
+            <button class="btn" type="submit" data-send="whatsapp">Enviar por WhatsApp</button>
+            <button class="btn secondary" type="submit" data-send="email">Enviar por E-mail</button>
+          </div>
+
+          <p class="form-ok muted" hidden>Mensagem preparada! Abrimos seu app para envio.</p>
+          <p class="form-err" style="color:var(--brand-red); display:none;">Confira os campos obrigatórios.</p>
         </form>
+
+        <!-- Ações rápidas -->
+        <div class="card" style="margin-top:1rem;">
+          <div class="body" style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a class="btn red" target="_blank" rel="noopener"
+               href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
+              Falar no WhatsApp
+            </a>
+            <a class="btn" href="mailto:contato@castel.com.br">Enviar e-mail</a>
+            <a class="btn secondary" href="tel:+5584988004885">Ligar agora</a>
+          </div>
+        </div>
       </div>
+
+      <!-- Endereço + mapa -->
       <div>
         <div class="card">
-          <iframe title="Mapa Castel" width="100%" height="420" style="border:0"
-            loading="lazy" allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126979.149!2d-35.3267!3d-5.7945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNatal%2C%20RN!5e0!3m2!1spt-BR!2sBR!4v1610000000000"></iframe>
           <div class="body">
-            <strong>Endereço</strong>
-            <p>Rua Exemplo, 123 — Natal/RN<br>
-            Tel: (84) 98800-4885 • <a href="mailto:contato@castelconstrutora.com.br">contato@castelconstrutora.com.br</a></p>
-            <a class="cta" target="_blank" rel="noopener" href="https://wa.me/5584999999999">Fale no WhatsApp</a>
+            <strong>Nosso endereço</strong>
+            <p style="margin:.25rem 0 0">
+              Logradouro: Rua Seis de Janeiro, 1837<br>
+              Bairro: Santo Antonio<br>
+              Município/UF: Mossoró, RN<br>
+              Tel: <a href="tel:+5584988004885">(84) 98800-4885</a> •
+              <a href="mailto:contato@castel.com.br">contato@castel.com.br</a>
+            </p>
+          </div>
+          <div style="padding:0 1rem 1rem;">
+            <div style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:12px;">
+              <iframe
+                title="Mapa Castel"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=-5.187,-37.344&z=14&output=embed"
+                style="position:absolute; inset:0; width:100%; height:100%; border:0;">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem;">
+          <div class="body">
+            <strong>Horário de atendimento</strong>
+            <p class="muted" style="margin:.25rem 0 0">Seg a Sex, 8h às 18h • Sáb, 8h às 12h</p>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </section>
+@endsection
 
-<footer class="footer section" role="contentinfo">
-  <div class="container">
-    <div class="grid" style="grid-template-columns: 2fr 1fr 1fr;">
-      <div>
-        <a class="brand" href="index"><img src="/img/Logo.png" width="150" alt="logo" /></a>
-        <p class="muted" style="max-width:48ch;">Construções e Incorporações. Qualidade, transparência e ética em cada empreendimento.</p>
-      </div>
-      <div>
-        <h3 style="margin:.25rem 0;">Contato</h3>
-        <p><a href="mailto:contato@castelconstrutora.com.br">contato@castelconstrutora.com.br</a><br>
-        <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações." style="color: #fff">(84) 98800-4885</a>
-        <p>Logradouro: Rua Seis de Janeiro, 1837 <br>
- Bairro: Santo Antonio <br>
- Município/UF: Mossoró, RN</p>
-      </div>
-      <div>
-        <h3 style="margin:.25rem 0;">Navegação</h3>
-        <p>
-          <a href="sobre">Sobre Nós</a><br>
-          <a href="empreendimentos">Empreendimentos</a><br>
-          <a href="reservas">Reservas</a><br>
-          <a href="terraplenagem">Terraplenagem</a><br>
-          <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações.">Contato</a>
-        </p>
-      </div>
-    </div>
-    <div class="subfooter">
-      © <span id="year"></span> Castel Construções e Incorporações — Todos os direitos reservados.
-    </div>
-  </div>
-</footer>
+@section('scripts')
+<script>
+  // Contato: escolhe WhatsApp ou E-mail conforme botão clicado
+  (function(){
+    const form = document.getElementById('form-contato');
+    if(!form) return;
 
-<a id="wa-fab" class="whatsapp-fab" aria-label="Fale no WhatsApp" target="_blank" rel="noopener" href="#">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0012 0C5.39 0 .03 5.36.03 12a11.9 11.9 0 001.6 6L0 24l6.2-1.62a11.9 11.9 0 005.8 1.48h.01c6.61 0 11.97-5.36 11.97-12 0-3.2-1.25-6.2-3.46-8.38zM12 22.03h-.01a9.96 9.96 0 01-5.08-1.4l-.36-.21-3.68.96.98-3.58-.24-.37A9.97 9.97 0 012.03 12C2.03 6.5 6.5 2.03 12 2.03c2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 012.92 7.07c0 5.5-4.47 9.97-9.93 9.97zm5.49-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07a8.08 8.08 0 01-2.38-1.47 9 9 0 01-1.67-2.06c-.18-.3 0-.46.14-.61.14-.15.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.37s-1.04 1.02-1.04 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.32.17-1.45-.07-.13-.27-.2-.57-.35z"/></svg>
-</a>
+    const ok  = form.querySelector('.form-ok');
+    const err = form.querySelector('.form-err');
 
-<script src="main.js"></script>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+    // guarda qual botão foi clicado
+    form.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[type="submit"][data-send]');
+      if(btn){ form.dataset.send = btn.getAttribute('data-send'); }
+    });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      err.style.display = 'none';
+
+      // validação simples
+      const ids = ['ct-assunto','ct-nome','ct-email','ct-telefone','ct-mensagem','ct-consent'];
+      for(const id of ids){
+        const el = document.getElementById(id);
+        if(!el) continue;
+        const valid = (el.type === 'checkbox') ? el.checked : !!String(el.value||'').trim();
+        if(!valid){ err.style.display = 'block'; el.focus(); return; }
+      }
+
+      const data = {
+        assunto: form.assunto.value,
+        nome: form.nome.value,
+        email: form.email.value,
+        telefone: form.telefone.value,
+        cidade: form.cidade.value || '',
+        mensagem: form.mensagem.value
+      };
+
+      const texto =
+`*Contato via site — Castel*
+Assunto: ${data.assunto}
+Nome: ${data.nome}
+E-mail: ${data.email}
+Telefone: ${data.telefone}
+Cidade: ${data.cidade}
+
+Mensagem:
+${data.mensagem}`;
+
+      const modo = form.dataset.send || 'whatsapp';
+
+      if(modo === 'email'){
+        const mailto = 'mailto:contato@castel.com.br'
+          + '?subject=' + encodeURIComponent('Contato — ' + data.assunto)
+          + '&body=' + encodeURIComponent(texto);
+        window.location.href = mailto;
+      }else{
+        const wa = 'https://wa.me/5584994618126?text=' + encodeURIComponent(texto);
+        window.open(wa, '_blank', 'noopener');
+      }
+
+      ok.hidden = false;
+      form.reset();
+      // opcional: rolar até o feedback
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  })();
+</script>
+@endsection
