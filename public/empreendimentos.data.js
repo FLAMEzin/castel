@@ -4,6 +4,7 @@ window.CASTEL_EMPREENDIMENTOS = [
       id: 1,
       slug: "residencial-atlantico",
       nome: "Residencial Atlântico",
+      tipo: "apartamento",
       status: "lancamento",
       cidade: "Natal",
       uf: "RN",
@@ -36,6 +37,7 @@ window.CASTEL_EMPREENDIMENTOS = [
       id: 2,
       slug: "parque-das-dunas",
       nome: "Parque das Dunas",
+      tipo: "apartamento",
       status: "em_construcao",
       cidade: "Natal",
       uf: "RN",
@@ -66,6 +68,7 @@ window.CASTEL_EMPREENDIMENTOS = [
       id: 3,
       slug: "vila-do-sol",
       nome: "Vila do Sol",
+      tipo: "casa",
       status: "entregue",
       cidade: "Mossoró",
       uf: "RN",
@@ -96,6 +99,7 @@ window.CASTEL_EMPREENDIMENTOS = [
       id: 4,
       slug: "praia-bella",
       nome: "Praia Bella",
+      tipo: "apartamento",
       status: "avulso",
       cidade: "Parnamirim",
       uf: "RN",
@@ -118,6 +122,31 @@ window.CASTEL_EMPREENDIMENTOS = [
       entregaPrevista: null,
       incorporacao: "Castel Construções e Incorporações",
       registro: "R-04/22222"
+    },
+    {
+      id: 5,
+      slug: "ranchotexas",
+      nome: "Ranchotexas",
+      status: "lancamento",
+      tipo: "lote",
+      cidade: "Natal",
+      uf: "RN",
+      bairro: "Ponta Negra",
+      preco: 150000,
+      area: 200,
+      descricao: "Lotes residenciais em condomínio fechado, com infraestrutura completa e lazer.",
+      capa: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1600&auto=format&fit=crop",
+      imagens: [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop",
+      ],
+      comodidades: ["Guarita 24h", "Ruas pavimentadas", "Área de lazer", "Quadra poliesportiva"],
+      coords: { lat: -5.88, lng: -35.18 }, // Aprox
+      plantas: [
+        "https://dummyimage.com/1200x800/eaeefa/31425a&text=Planta+do+loteamento"
+      ],
+      entregaPrevista: "2028-01",
+      incorporacao: "Castel Construções e Incorporações",
+      registro: "R-05/12345"
     }
   ];
   

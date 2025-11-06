@@ -42,11 +42,19 @@ Route::get('/simulador', function () {
     return view('simulador');
 })->name('simulador');
 
-Route::get('/simulador', function () {
-    return view('simulador');
-})->name('simulador');
-
-
 Route::get('/empreendimento', function () {
     return view('empreendimento');
 })->name('empreendimento');
+
+// Rotas do Simulador
+Route::get('/simulador/dados-adicionais', function () {
+    return view('simulador-dados-adicionais');
+})->name('simulador.dados-adicionais');
+
+Route::get('/simulador/dados-pessoais', function () {
+    return view('simulador-dados-pessoais');
+})->name('simulador.dados-pessoais');
+
+Route::get('/simulador/resultado', function () {
+    return view('simulador-resultado');
+})->name('simulador.resultado');

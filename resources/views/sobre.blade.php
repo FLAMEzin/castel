@@ -6,9 +6,9 @@
 
 <!-- Hero com vídeo e mensagem principal -->
 <section class="hero" role="region" aria-label="Apresentação institucional">
-  <video src="/media/Institucional.mp4" autoplay muted loop playsinline></video>
+<video src="/media/VideoCastel.mp4" autoplay muted loop playsinline></video>
   <div class="content">
-    <h1>Construindo confiança, entregando qualidade</h1>
+    <h1 style="color:var(--brand-blue); text-shadow:none">Construindo confiança, entregando qualidade</h1>
     <p class="lead">
       Há mais de uma década transformando terrenos em lares, com transparência, prazo e foco total no cliente.
     </p>
