@@ -7,7 +7,7 @@
   .service-card { position: relative; border-radius: var(--radius-md); overflow: hidden; display: block; cursor: pointer; }
   .service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(18, 29, 49, 0.9) 0%, rgba(18, 29, 49, 0.4) 50%, transparent 100%); z-index: 1; transition: background .3s ease; }
   .service-card:hover::after { background: linear-gradient(to top, rgba(18, 29, 49, 0.7) 0%, transparent 80%); }
-  .service-card img { display: block; width: 100%; height: 300px; object-fit: cover; transition: transform .3s ease; }
+  .service-card img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: transform .3s ease; }
   .service-card:hover img { transform: scale(1.05); }
   .service-card figcaption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; color: #fff; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 100%; }
   .service-card h3 { margin: 0 0 .5rem; font-size: 1.5rem; color: #fff; }
@@ -32,22 +32,22 @@
 
     <div class="grid cols-3">
       <div class="service-card" data-service="Terraplanagem">
-        <figure><img src="https://images.unsplash.com/photo-1603401524513-9a7407a82b93?q=80&w=1200" alt="Serviço de Terraplanagem" /><figcaption><h3>Terraplanagem</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/terraplenagem.jpg" alt="Serviço de Terraplanagem" /><figcaption><h3>Terraplanagem</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
       <div class="service-card" data-service="Perfuração de Estaca">
-        <figure><img src="https://images.unsplash.com/photo-1517983695393-5592a3c529de?q=80&w=1200" alt="Serviço de Perfuração de Estaca" /><figcaption><h3>Perfuração de Estaca</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/perfuracao.jpg" alt="Serviço de Perfuração de Estaca" /><figcaption><h3>Perfuração de Estaca</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
       <div class="service-card" data-service="Limpeza de Lote">
-        <figure><img src="https://images.unsplash.com/photo-1589920155322-1f4a47a1f5c7?q=80&w=1200" alt="Serviço de Limpeza de Lote" /><figcaption><h3>Limpeza de Lote</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/limpeza.jpg" alt="Serviço de Limpeza de Lote" /><figcaption><h3>Limpeza de Lote</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
       <div class="service-card" data-service="Drenagem">
-        <figure><img src="https://images.unsplash.com/photo-1599824630283-7524b0a43585?q=80&w=1200" alt="Serviço de Drenagem" /><figcaption><h3>Drenagem</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/drenagem.jpg" alt="Serviço de Drenagem" /><figcaption><h3>Drenagem</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
       <div class="service-card" data-service="Aterro">
-        <figure><img src="https://images.unsplash.com/photo-1558961165-3d5dfc6a380e?q=80&w=1200" alt="Serviço de Aterro" /><figcaption><h3>Aterro</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/aterro.jpeg" alt="Serviço de Aterro" /><figcaption><h3>Aterro</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
       <div class="service-card" data-service="Sondagem de Solo">
-        <figure><img src="https://images.unsplash.com/photo-1621984422939-0cfb11b5195b?q=80&w=1200" alt="Serviço de Sondagem de Solo" /><figcaption><h3>Sondagem de Solo</h3><span class="btn">Orçamento</span></figcaption></figure>
+        <figure><img src="/img/terraplenagem/sondagem.png" alt="Serviço de Sondagem de Solo" /><figcaption><h3>Sondagem de Solo</h3><span class="btn">Orçamento</span></figcaption></figure>
       </div>
     </div>
 

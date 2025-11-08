@@ -8,6 +8,7 @@
     grid-template-columns: 1fr 1fr;
     min-height: 80vh;
     align-items: center;
+    background-color: #f4f7f6;
   }
   .simulador-info {
     padding: 3rem;
@@ -22,17 +23,25 @@
   .simulador-info::before {
     content: '';
     position: absolute; top:0; left:0; right:0; bottom:0;
-    background: rgba(18, 29, 49, 0.6);
+    background: rgba(18, 29, 49, 0.7);
   }
   .simulador-info > * {
     position: relative;
     z-index: 1;
   }
+  .simulador-info h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+  }
+  .simulador-info .lead {
+      font-size: 1.15rem;
+      opacity: 0.9;
+  }
   .simulador-tag {
-    background-color: var(--brand-yellow);
-    color: var(--brand-blue);
+    background-color: #facc15; /* Corrigido: var(--brand-yellow) não existia */
+    color: #143a7b; /* Usando o valor de --brand-blue diretamente */
     padding: .25rem .75rem;
-    border-radius: var(--radius-sm);
+    border-radius: 6px; /* Corrigido: var(--radius-sm) não existia */
     font-weight: bold;
     font-size: .8rem;
     margin-bottom: 1rem;
@@ -42,32 +51,77 @@
     padding: 3rem;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
-  .simulador-form {
+  .simulador-form.card {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
+    background-color: #fff;
+    border-radius: 8px; /* Corrigido: var(--radius-md) não existia */
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  .simulador-form.card:hover {
+    transform: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  .simulador-form h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.75rem;
+      color: #333;
   }
   .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
-  .form-group label {
+  .form-group > label {
     display: block;
-    margin-bottom: .5rem;
-    font-weight: 500;
+    margin-bottom: .6rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
   }
   .form-group input, .form-group select {
     width: 100%;
-    padding: .75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: var(--radius-sm, 6px);
+    padding: .85rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Corrigido: var(--radius-sm) não existia */
     font-size: 1rem;
   }
-  .radio-group {
-    display: flex; gap: 1rem;
+  .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: #ccc;
   }
+  .radio-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+  .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+  }
+  .radio-group input[type="radio"] {
+      width: auto;
+      accent-color: #1E3A8A; /* Corrigido: var(--brand-blue) */
+  }
+  .actions .btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+  }
+
   @media (max-width: 992px) {
     .simulador-container { grid-template-columns: 1fr; }
-    .simulador-info { min-height: 40vh; }
+    .simulador-info { min-height: 50vh; text-align: center; }
+    .simulador-form-container { padding: 2rem; }
+    .simulador-form.card { padding: 2rem; }
   }
 </style>
 
@@ -81,7 +135,7 @@
 
     <div class="simulador-form-container">
       <div class="simulador-form card">
-        <h3 style="margin-bottom:1.5rem">Vamos começar?</h3>
+        <h3>Vamos começar?</h3>
         <form action="{{ route('simulador.dados-adicionais') }}" method="GET">
           <div class="form-group">
             <select id="cidade" name="cidade" required>
@@ -105,7 +159,7 @@
             <input type="text" name="idade" placeholder="Qual a sua idade?" required>
           </div>
           <div class="actions">
-            <button type="submit" class="btn red" style="width:100%">INICIAR SIMULAÇÃO</button>
+            <button type="submit" class="btn red">INICIAR SIMULAÇÃO</button>
           </div>
         </form>
       </div>
