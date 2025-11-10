@@ -13,7 +13,7 @@
       Há mais de uma década transformando terrenos em lares, com transparência, prazo e foco total no cliente.
     </p>
     <div class="actions">
-      <a class="cta" href="/empreendimentos">Conheça nossos empreendimentos</a>
+      <a class="cta" href="https://castel.acadeone.com.br/vendas/" target="_blank">Conheça nossos empreendimentos</a>
       <a class="cta" style="background:var(--brand-blue)" href="/contato">Fale com a gente</a>
     </div>
   </div>
@@ -24,7 +24,7 @@
   <div class="container">
     <div class="kpis">
       <div class="kpi reveal">
-        <div class="num" data-kpi="12">12+</div>
+        <div class="num" data-kpi="16">16+</div>
         <div class="muted">anos de história</div>
       </div>
       <div class="kpi reveal">
@@ -43,172 +43,95 @@
   </div>
 </section>
 
-<!-- Missão, Visão, Valores -->
+<!-- História -->
 <section class="section" style="background:var(--brand-gray)">
   <div class="container">
-    <h2>Quem somos</h2>
-    <p class="muted" style="max-width:70ch">
-      A Castel nasceu com o propósito de transformar sonhos em endereços. Unimos engenharia, gestão e atendimento humano
-      para entregar obras seguras, funcionais e com estética que valoriza cada detalhe.
-    </p>
-    <div class="grid cols-3" style="margin-top:1rem">
-      <article class="card reveal">
-        <img class="thumb" alt="Missão" src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=1200&auto=format&fit=crop">
-        <div class="body">
-          <h3 style="margin:.25rem 0">Missão</h3>
-          <p>Construir com excelência, respeitando prazos, orçamento e a experiência do cliente do início ao fim.</p>
-        </div>
-      </article>
-      <article class="card reveal">
-        <img class="thumb" alt="Visão" src="https://images.unsplash.com/photo-1529429612779-c8e40ef2f36e?q=80&w=1200&auto=format&fit=crop">
-        <div class="body">
-          <h3 style="margin:.25rem 0">Visão</h3>
-          <p>Ser referência regional em incorporação e engenharia, reconhecida por qualidade e transparência.</p>
-        </div>
-      </article>
-      <article class="card reveal">
-        <img class="thumb" alt="Valores" src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop">
-        <div class="body">
-          <h3 style="margin:.25rem 0">Valores</h3>
-          <ul style="margin:.25rem 0 0; padding-left:1rem">
-            <li>Ética e transparência</li>
-            <li>Segurança e qualidade</li>
-            <li>Compromisso com prazos</li>
-            <li>Respeito às pessoas e ao meio ambiente</li>
-          </ul>
-        </div>
-      </article>
+    <h2>Nossa História</h2>
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+      <div class="reveal">
+        <p class="lead">Tudo começou a cerca de 16 anos, quando dois jovens empreendedores, <strong>Einstein Preston</strong> e <strong>Marcel Duarte</strong>, amigos de longas datas e que já vinham de outros negócios, apostaram dessa vez no setor imobiliário sócios da JR Imóveis, que logo prosperaram no setor.</p>
+        <p>Muito inquietos e logo perceberam que podiam ir mais longe, então decidiram entrar da área da construção civil, acreditam em uma região da cidade onde todos diziam que era uma loucura, loucura essa que virou um desafio que se tornou um case de sucesso.</p>
+        <p>Desde então a Castel Construções e Incorporações vem se destacando cada vez mais no mercado de Mossoró e Região pela qualidade e compromisso com seus empreendimentos.</p>
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop" alt="Equipe da Castel Construções" style="border-radius: 8px; width: 100%; height: auto;">
+      </div>
     </div>
   </div>
+</section>
+
+<!-- Portfólio -->
+<section class="section">
+    <div class="container">
+        <h2>Portfólio de Sucesso</h2>
+        <p class="muted" style="max-width:80ch; margin-bottom: 2rem;">A Castel tem em seu portfólio condomínios fechados que são referência no mercado, além de projetos inovadores em andamento.</p>
+        <div class="grid cols-3">
+            <div class="card reveal">
+                <div class="body">
+                    <h3 style="margin:.25rem 0">Condomínios Entregues</h3>
+                    <p>Três condomínios fechados entregues e que são referência no mercado: o <strong>Boulevard Residence</strong> em Mossoró, o <strong>Praia Mar Residence</strong> e o <strong>Veneza Residence Beach</strong> na cidade praia de Tibau/RN.</p>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="body">
+                    <h3 style="margin:.25rem 0">Complexo Rota dos Ventos</h3>
+                    <p>Um complexo com 1.600 lotes, que abriga o <strong>Veneza Residencial</strong> em fase de construção, além do condomínio <strong>Rota Galpões</strong> e <strong>Galpões Rota</strong> em fase de implantação.</p>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="body">
+                    <h3 style="margin:.25rem 0">Futuros Lançamentos</h3>
+                    <p>Em 2025, o <strong>Rancho Texas</strong>, um condomínio para casa de campo. Em 2026, o <strong>Porto Ilha</strong> em Tibau/RN e o <strong>Porto Franco</strong> em Mossoró.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Diferenciais -->
-<section class="section">
-  <div class="container">
-    <h2>Nossos diferenciais</h2>
-    <div class="grid cols-4" style="margin-top:1rem">
-      <div class="card reveal">
-        <div class="body">
-          <strong>Atendimento humano</strong>
-          <p class="muted">Do primeiro contato à entrega das chaves, com transparência e proximidade.</p>
-        </div>
-      </div>
-      <div class="card reveal">
-        <div class="body">
-          <strong>Projeto inteligente</strong>
-          <p class="muted">Plantas funcionais, materiais de qualidade e estética atemporal.</p>
-        </div>
-      </div>
-      <div class="card reveal">
-        <div class="body">
-          <strong>Prazo e previsibilidade</strong>
-          <p class="muted">Gestão de obra com responsabilidade e comunicação clara.</p>
-        </div>
-      </div>
-      <div class="card reveal">
-        <div class="body">
-          <strong>Pós-obra presente</strong>
-          <p class="muted">Suporte técnico e documentação em dia. Confiança que continua.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Linha do tempo -->
 <section class="section" style="background:var(--brand-gray)">
   <div class="container">
-    <h2>Nossa trajetória</h2>
-    <div class="grid" style="grid-template-columns:1fr 1fr; align-items:start">
-      <div class="reveal">
-        <ul style="list-style:none; padding:0; margin:0">
-          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
-            <span class="badge blue" aria-hidden="true">2013</span>
-            <div>
-              <strong>Fundação da Castel</strong>
-              <p class="muted" style="margin:.25rem 0 0">Primeiras obras residenciais com foco em qualidade construtiva.</p>
+    <h2>Nossos Diferenciais</h2>
+    <div class="grid cols-2" style="margin-top:1rem; gap: 2rem;">
+        <div class="card reveal">
+            <div class="body">
+                <strong>CASAS CASTEL</strong>
+                <p class="muted">Construindo as casas de acordo com o sonho e o desejo de cada cliente.</p>
             </div>
-          </li>
-          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
-            <span class="badge blue" aria-hidden="true">2017</span>
-            <div>
-              <strong>Expansão e novos bairros</strong>
-              <p class="muted" style="margin:.25rem 0 0">Portfólio cresce com produtos para diferentes perfis.</p>
-            </div>
-          </li>
-          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
-            <span class="badge blue" aria-hidden="true">2021</span>
-            <div>
-              <strong>Processos digitais</strong>
-              <p class="muted" style="margin:.25rem 0 0">Gestão integrada, mais agilidade e previsibilidade de obra.</p>
-            </div>
-          </li>
-          <li style="display:flex; gap:.75rem; margin-bottom:1rem">
-            <span class="badge blue" aria-hidden="true">Hoje</span>
-            <div>
-              <strong>Casas e apartamentos que viram histórias</strong>
-              <p class="muted" style="margin:.25rem 0 0">Seguimos entregando com seriedade e foco no cliente.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="card">
-          <img class="thumb" alt="Obras Castel" src="https://images.unsplash.com/photo-1501876725168-00c445821c9e?q=80&w=1600&auto=format&fit=crop">
-          <div class="body">
-            <strong>Construção que inspira</strong>
-            <p class="muted" style="margin:0">Equipe técnica experiente, fornecedores homologados e controle de qualidade em todas as etapas.</p>
-          </div>
         </div>
-      </div>
+        <div class="card reveal">
+            <div class="body">
+                <strong>Castel Terraplenagem</strong>
+                <p class="muted">Uma empresa de serviços e locações de equipamentos para dinamizar e dar velocidade às obras.</p>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+        <h4>Nossa marca mais forte é entregar obra antes do prazo.</h4>
+        <p><strong>Castel Construções:</strong> muita qualidade alinhada a conforto e bem estar.</p>
     </div>
   </div>
 </section>
 
 <!-- Time & Cultura -->
 <section class="section">
-  <div class="container">
-    <h2>Time & cultura</h2>
-    <div class="grid cols-3" style="margin-top:1rem">
-      <div class="card reveal">
-        <div class="body">
-          <strong>Liderança técnica</strong>
-          <p class="muted">Engenharia com experiência de campo e obra — decisões assertivas e seguras.</p>
-        </div>
+  <div class="container" style="text-align:center;">
+    <h2>Diretores</h2>
+    <p class="muted">Trabalho, foco e determinação é o combustível desses empreendedores que não páram.</p>
+    <div class="grid cols-2" style="margin-top:1rem; text-align:center;">
+      <div class="reveal">
+          <strong>Einstein Preston Cordeiro Leite</strong>
       </div>
-      <div class="card reveal">
-        <div class="body">
-          <strong>Cliente no centro</strong>
-          <p class="muted">Atendimento consultivo, comunicação clara e compromisso com a experiência.</p>
-        </div>
-      </div>
-      <div class="card reveal">
-        <div class="body">
-          <strong>Parcerias sólidas</strong>
-          <p class="muted">Rede de fornecedores e especialistas, garantindo padrão e prazo.</p>
-        </div>
+      <div class="reveal">
+          <strong>Marcel Frederick Duarte Reginaldo</strong>
       </div>
     </div>
-
-    <div class="actions" style="margin-top:1rem">
-      <a class="btn" href="/empreendimentos">Ver portfólio</a>
+    <div class="actions" style="margin-top:2rem">
+      <a class="btn" href="https://castel.acadeone.com.br/vendas/" target="_blank">Ver portfólio</a>
       <a class="btn secondary" href="https://www.instagram.com/castelconstrutora" target="_blank" rel="noopener">Ver bastidores no Instagram</a>
     </div>
   </div>
 </section>
-
-<!-- Selos / Confiança -->
-<!-- <section class="section reveal" aria-label="Selos de confiança">
-  <div class="container">
-    <h2>Confiança de quem constrói com a gente</h2>
-    <div class="trustbar" style="margin-top:.5rem">
-      <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=CREA" alt="CREA" />
-      <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=CAIXA" alt="CAIXA" />
-      <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=Selo+Qualidade" alt="Selo de Qualidade" />
-      <img src="https://dummyimage.com/140x40/ccd3e3/31425a&text=PBQP-H" alt="PBQP-H" />
-    </div>
-  </div>
-</section> -->
 
 @endsection
 
@@ -223,9 +146,9 @@
     function step(ts){
       const p = Math.min(1, (ts - start)/dur);
       const v = Math.floor(easeOut(p) * target);
-      el.textContent = target >= 100 ? v + (target >= 100 ? (target % 1 ? '' : '+') : '') : v + (target >= 10 ? '+' : '');
+      el.textContent = v + '+';
       if(p < 1) requestAnimationFrame(step);
-      else el.textContent = target + (target >= 10 ? '+' : '');
+      else el.textContent = target + '+';
     }
     requestAnimationFrame(step);
   }
