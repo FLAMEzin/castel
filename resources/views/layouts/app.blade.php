@@ -31,10 +31,10 @@
         <a href="/index" class="@if(request()->is('index')) active @endif">Início</a>
         <a href="/sobre" class="@if(request()->is('sobre')) active @endif">Sobre Nós</a>
         <a href="/empreendimentos" class="@if(request()->is('empreendimentos')) active @endif">Empreendimentos</a>
-        <a href="/reservas" class="@if(request()->is('reservas')) active @endif">Reservas</a>
         <a href="/terraplenagem" class="@if(request()->is('terraplenagem')) active @endif">Terraplenagem</a>
         <a href="/simulador" class="@if(request()->is('simulador')) active @endif">Simulador</a>
         <a href="/contato" class="@if(request()->is('contato')) active @endif">Contato</a>
+        <a href="https://castel.acadeone.com.br/vendas/" class="ctb">Corretores</a>
         <a class="cta" href="https://www.instagram.com/castelconstrutora" target="_blank" rel="noopener">Instagram</a>
       </nav>
       <button class="hamburger" aria-label="Abrir menu"><span></span></button>

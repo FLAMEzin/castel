@@ -25,8 +25,8 @@ const EMPREENDIMENTOS = [
     slug: "residencial-atlantico",
     nome: "Residencial Atlântico",
     status: "lancamento",
-    cidade: "Natal", uf: "RN", bairro: "Ponta Negra",
-    preco: 289900, area: 58, quartos: 2, suites: 1, vagas: 1, banheiros: 2,
+    cidade: "", uf: "RN", bairro: "100m²",
+    preco: 289900, area: "Natal", quartos: 2, vagas: 1, banheiros: 2,
     descricao: "Empreendimento moderno a poucos minutos da orla, com lazer completo e plantas inteligentes.",
     capa: "https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1600&auto=format&fit=crop",
     imagens: [
@@ -44,6 +44,7 @@ const EMPREENDIMENTOS = [
     incorporacao: "Castel Construções e Incorporações",
     registro: "R-01/12345",
   },
+  
 ];
 
 const DETAIL_BASE = "/empreendimento";
@@ -200,23 +201,38 @@ function pageEmpreendimento(){
              href="https://wa.me/5584994618126?text=${encodeURIComponent(`Olá! Tenho interesse no ${item.nome}. Pode me ajudar?`)}">Quero conversar</a>
           <a class="btn" href="/reservas">Reservar/Visitar</a>
           <a class="btn secondary" href="/simulador">Simular financiamento</a>
+          <strong>Informações legais</strong>
+          <p class="muted" style="margin:.25rem 0 0;">
+            Incorporação: ${item.incorporacao || "-"} • Registro: ${item.registro || "-"}<br/>
+            Previsão de entrega: ${item.entregaPrevista ? item.entregaPrevista : "—"}
+          </p>
         </div>
 
         <div class="card" style="margin-top:1rem;">
           <div class="body">
-            <strong>Informações legais</strong>
-            <p class="muted" style="margin:.25rem 0 0;">
-              Incorporação: ${item.incorporacao || "-"} • Registro: ${item.registro || "-"}<br/>
-              Previsão de entrega: ${item.entregaPrevista ? item.entregaPrevista : "—"}
-            </p>
+            
           </div>
         </div>
       </div>
     </div>
 
     <section class="section" style="padding-top:1rem;">
-      <h2 style="margin:0 0 .5rem;">Plantas</h2>
-      ${ plantas ? `<div class="gallery" style="display:grid; grid-template-columns: repeat(3,1fr); gap:.5rem;">${plantas}</div>` : `<p class="muted">Plantas em breve.</p>` }
+      <h2 style="margin:0 0 .5rem;">Reservar</h2>
+          <p class="muted">Preencha o formulário para manifestar interesse em um empreendimento.</p>
+          <form id="form-reserva" class="card" style="padding:1rem;">
+            <div class="form-grid">
+              <div><label>Tipo</label>
+                <select name="tipo"><option>Reserva</option><option>Visita</option><option>Dúvidas</option></select>
+              </div>
+              <div><label>Nome</label><input class="input" name="nome" required></div>
+              <div><label>E-mail</label><input type="email" class="input" name="email" required></div>
+              <div><label>Telefone/WhatsApp</label><input type="tel" class="input" name="telefone" required></div>
+              <div class="full"><label>Mensagem</label><textarea class="input" rows="5" name="mensagem"></textarea></div>
+              <div class="full"><label><input type="checkbox" required> Concordo em receber contato da Castel.</label></div>
+            </div>
+            <button class="btn" type="submit">Enviar</button>
+            <p class="form-ok muted" hidden>Recebemos sua solicitação. Obrigado!</p>
+          </form>
     </section>
 
     <section class="section" style="padding-top:0;">
