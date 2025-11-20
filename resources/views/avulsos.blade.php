@@ -43,7 +43,7 @@
       <a href="empreendimentos">Empreendimentos</a>
       <a href="reservas">Reservas</a>
       <a href="avulsos">Avulsos</a>
-      <a href="terraplenagem">Castel Terraplenagem</a>
+      <a href="servicos">Castel Serviços</a>
       <a href="simulador">Simulador</a>
       <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações.">Contato</a>
       <a class="cta" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
@@ -87,7 +87,7 @@
           <a href="sobre">Sobre Nós</a><br>
           <a href="empreendimentos">Empreendimentos</a><br>
           <a href="reservas">Reservas</a><br>
-          <a href="terraplenagem">Terraplenagem</a><br>
+          <a href="servicos">Serviços</a><br>
           <a href="https://wa.me/5584994618126?text=Olá!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informações.">Contato</a>
         </p>
       </div>

@@ -24,7 +24,7 @@
   <div class="container">
     <div class="kpis">
       <div class="kpi reveal">
-        <div class="num" data-kpi="16">16+</div>
+        <div class="num" data-kpi="{{ $sobre['anos_historia'] }}">{{ $sobre['anos_historia'] }}</div>
         <div class="muted">anos de história</div>
       </div>
       <div class="kpi reveal">
@@ -65,7 +65,7 @@
         </div>
         <div class="card reveal">
             <div class="body">
-                <strong>Castel Terraplenagem</strong>
+                <strong>Castel Serviços</strong>
                 <p class="muted">Uma empresa de serviços e locações de equipamentos para dinamizar e dar velocidade às obras.</p>
             </div>
         </div>

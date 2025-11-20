@@ -67,7 +67,6 @@
                href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
               Falar no WhatsApp
             </a>
-            <a class="btn" href="mailto:contato@castel.com.br">Enviar e-mail</a>
             <a class="btn secondary" href="tel:+5584988004885">Ligar agora</a>
           </div>
         </div>
@@ -85,18 +84,6 @@
               Tel: <a href="tel:+5584988004885">(84) 98800-4885</a> •
               <a href="mailto:contato@castel.com.br">contato@castel.com.br</a>
             </p>
-          </div>
-          <div style="padding:0 1rem 1rem;">
-            <div style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:12px;">
-              <iframe
-                title="Mapa Castel"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=-5.187,-37.344&z=14&output=embed"
-                style="position:absolute; inset:0; width:100%; height:100%; border:0;">
-              </iframe>
-            </div>
           </div>
         </div>
 
@@ -134,7 +121,7 @@
       err.style.display = 'none';
 
       // validação simples
-      const ids = ['ct-assunto','ct-nome','ct-email','ct-telefone','ct-mensagem','ct-consent'];
+      const ids = ['ct-assunto','ct-nome','ct-email','ct-telefone','ct-consent'];
       for(const id of ids){
         const el = document.getElementById(id);
         if(!el) continue;
@@ -148,7 +135,7 @@
         email: form.email.value,
         telefone: form.telefone.value,
         cidade: form.cidade.value || '',
-        mensagem: form.mensagem.value
+        mensagem: form.mensagem.value || ''
       };
 
       const texto =

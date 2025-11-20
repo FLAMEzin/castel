@@ -7,8 +7,8 @@
   <section class="hero" role="region" aria-label="Apresentação">
     <video src="/media/VideoCastelHome.mp4" autoplay muted loop playsinline></video>
     <div class="content">
-      <h1>Seu novo lar com <span style="color: var(--brand-red)">segurança</span> e <span style="color:#a3c9ff">qualidade</span>.</h1>
-      <p class="lead">Incorporações modernas, atendimento humano e condições que cabem no seu bolso.</p>
+      <h1 style="color:var(--brand-blue); text-shadow:none">{{ $home['title'] }}</h1>
+      <p class="lead">{{ $home['sub_title'] }}</p>
       <div class="actions">
         <a class="cta" href="/empreendimentos">Ver Empreendimentos</a>
         <a class="cta" style="background:var(--brand-blue)" href="/simulador">Simular Financiamento</a>
@@ -24,24 +24,4 @@
     </div>
   </section>
 
-  <section class="section" id="instagram">
-    <div class="container">
-      <h2>Instagram</h2>
-      <p class="muted">Acompanhe <strong>@castelconstrutora</strong>.</p>
-      <div class="grid cols-3">
-        <div class="card" data-instagram-profile="castelconstrutora" role="button" tabindex="0" aria-label="Abrir Instagram">
-          <img class="thumb" src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2f07?q=80&w=1200&auto=format&fit=crop" alt="Post do Instagram" />
-          <!-- <div class="body"><strong>@castelconstrutora</strong><p class="muted">Toque para abrir</p></div> -->
-        </div>
-        <div class="card" data-instagram-profile="castelconstrutora">
-          <img class="thumb" src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop" alt="Post do Instagram" />
-          <!-- <div class="body"><strong>@castelconstrutora</strong><p class="muted">Toque para abrir</p></div> -->
-        </div>
-        <div class="card" data-instagram-profile="castelconstrutora">
-          <img class="thumb" src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=1200&auto=format&fit=crop" alt="Post do Instagram" />
-          <!-- <div class="body"><strong>@castelconstrutora</strong><p class="muted">Toque para abrir</p></div> -->
-        </div>
-      </div>
-    </div>
-  </section>
 @endsection

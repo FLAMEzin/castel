@@ -31,7 +31,7 @@
         <a href="/index" class="@if(request()->is('index')) active @endif">Início</a>
         <a href="/sobre" class="@if(request()->is('sobre')) active @endif">Sobre Nós</a>
         <a href="/empreendimentos" class="@if(request()->is('empreendimentos')) active @endif">Empreendimentos</a>
-        <a href="/terraplenagem" class="@if(request()->is('terraplenagem')) active @endif">Terraplenagem</a>
+        <a href="/servicos" class="@if(request()->is('servicos')) active @endif">Serviços</a>
         <a href="/simulador" class="@if(request()->is('simulador')) active @endif">Simulador</a>
         <a href="/contato" class="@if(request()->is('contato')) active @endif">Contato</a>
         <a href="https://castel.acadeone.com.br/vendas/" class="ctb">Corretores</a>
@@ -60,7 +60,7 @@
         </div>
         <div>
           <h3 style="margin:.25rem 0;">Navegação</h3>
-          <p><a href="/sobre">Sobre Nós</a><br /><a href="/empreendimentos">Empreendimentos</a><br /><a href="/reservas">Reservas</a><br /><a href="/terraplenagem">Terraplenagem</a><br /><a href="/contato">Contato</a></p>
+          <p><a href="/sobre">Sobre Nós</a><br /><a href="/empreendimentos">Empreendimentos</a><br /><a href="/reservas">Reservas</a><br /><a href="/servicos">Serviços</a><br /><a href="/contato">Contato</a></p>
         </div>
       </div>
       <div class="subfooter">© <span id="year"></span> Castel Construções e Incorporações — Todos os direitos reservados.</div>

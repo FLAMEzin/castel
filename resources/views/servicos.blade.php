@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Castel Terraplenagem • Castel')
-@section('description', 'Serviços de terraplenagem e obras de infraestrutura.')
+@section('title', 'Castel Serviços • Castel')
+@section('description', 'Serviços e obras de infraestrutura.')
 
 @section('head')
 <style>

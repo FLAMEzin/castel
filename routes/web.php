@@ -1,13 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Home;
+use App\Models\About;
 
 Route::get('/', function () {
     return view('index');
 });
 
 Route::get('/index', function () {
-    return view('index');
+    $home = Home::first()->toArray();
+    return view('index',compact('home'));
 })->name('index');
 
 Route::get('/avulsos', function () {
@@ -19,7 +22,8 @@ Route::get('/contato', function () {
 })->name('contato');
 
 Route::get('/sobre', function () {
-    return view('sobre');
+    $sobre = About::first()->toArray();
+    return view('sobre',compact('sobre'));
 })->name('sobre');
 
 Route::get('/empreendimentos', function () {
@@ -34,9 +38,9 @@ Route::get('/depoimentos', function () {
     return view('depoimentos');
 })->name('depoimentos');
 
-Route::get('/terraplenagem', function () {
-    return view('terraplenagem');
-})->name('terraplenagem');
+Route::get('/servicos', function () {
+    return view('servicos');
+})->name('servicos');
 
 Route::get('/simulador', function () {
     return view('simulador');

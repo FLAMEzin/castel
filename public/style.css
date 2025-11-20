@@ -6,6 +6,7 @@
   --brand-dark:#0b1e46;
   --brand-gray:#f4f6fa;
   --container:1200px;
+  --orange:#f97316; /* Laranja da referência */
 
   --glass: rgba(255,255,255,.72);
   --shadow: 0 10px 30px rgba(3,16,46,.08);
@@ -110,7 +111,7 @@ a:hover{text-decoration:underline}
 .hero .actions{margin-top:1.1rem;display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
 
 /* ================== Grid ================== */
-.grid{display:grid;gap:1rem}
+.grid{display:grid;gap:1.5rem} /* Aumentado de 1rem para 1.5rem */
 .grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .grid.cols-4{grid-template-columns:repeat(4,1fr)}
 @media (max-width:960px){
@@ -146,11 +147,63 @@ button.btn{
   cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 1rem;border-radius:12px;border:0;background:var(--brand-blue);color:#fff;
   font-weight:800;letter-spacing:.2px;box-shadow:var(--shadow);
-  transition:transform .2s ease, filter .2s ease
+  transition:transform .2s ease, filter .2s ease, background-color .2s ease, color .2s ease;
 }
 button.btn:hover{transform:translateY(-2px);filter:brightness(.96)}
 button.btn.secondary{background:#0f2d5c}
 button.btn.red{background:var(--brand-red)}
+
+/* ================ Empreendimentos Search ================ */
+.busca-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+.actions-bar {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap; /* Para quebrar em telas menores */
+}
+.search-bar {
+    position: relative;
+    width: 100%;
+}
+.search-bar .input {
+    padding-right: 3.5rem; /* Espaço para o botão */
+    border-radius: 999px; /* Bordas arredondadas */
+    height: 52px;
+}
+.search-bar .search-btn {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: var(--brand-blue); /* Alterado para azul */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.btn.orange-btn {
+    background-color: var(--brand-blue); /* Alterado para azul */
+    color: #fff;
+}
+.btn.light-btn {
+    background-color: var(--brand-gray);
+    color: #333;
+    border: 1px solid #e6e8ee;
+    box-shadow: none;
+}
+.btn#btn-filtro.active {
+    background-color: var(--brand-dark);
+    color: #fff;
+}
 
 /* ================= Footer (RESPONSIVO) ================= */
 /* Antes estava fixo em 3 colunas e quebrava no mobile */
