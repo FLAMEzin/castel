@@ -2,13 +2,36 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\About;
+use App\Models\Home;
 
 Route::get('/', function () {
-    return view('index');
+    $home = Home::first();
+    if (!$home) {
+        $home = new Home([
+            'card_title' => 'Bem-vindo',
+            'card_text' => 'Este é um texto padrão.',
+            'contato_text' => 'Entre em contato conosco.',
+            'contato_phone' => '(00) 0000-0000',
+            'contato_email' => 'contato@exemplo.com',
+            'contato_address' => 'Endereço de exemplo',
+        ]);
+    }
+    return view('index', ['home' => $home->toArray()]);
 });
 
 Route::get('/index', function () {
-    return view('index');
+    $home = Home::first();
+    if (!$home) {
+        $home = new Home([
+            'card_title' => 'Bem-vindo',
+            'card_text' => 'Este é um texto padrão.',
+            'contato_text' => 'Entre em contato conosco.',
+            'contato_phone' => '(00) 0000-0000',
+            'contato_email' => 'contato@exemplo.com',
+            'contato_address' => 'Endereço de exemplo',
+        ]);
+    }
+    return view('index', ['home' => $home->toArray()]);
 })->name('index');
 
 Route::get('/avulsos', function () {
@@ -16,7 +39,18 @@ Route::get('/avulsos', function () {
 })->name('avulsos');
 
 Route::get('/contato', function () {
-    return view('contato');
+    $home = Home::first();
+    if (!$home) {
+        $home = new Home([
+            'card_title' => 'Bem-vindo',
+            'card_text' => 'Este é um texto padrão.',
+            'contato_text' => 'Entre em contato conosco.',
+            'contato_phone' => '(00) 0000-0000',
+            'contato_email' => 'contato@exemplo.com',
+            'contato_address' => 'Endereço de exemplo',
+        ]);
+    }
+    return view('contato', ['home' => $home->toArray()]);
 })->name('contato');
 
 Route::get('/sobre', function () {

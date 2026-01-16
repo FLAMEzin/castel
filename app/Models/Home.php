@@ -22,6 +22,12 @@ class Home extends Model
         'title',
         'sub_title',
         'horario_atendimento',
+        'card_title',
+        'card_text',
+        'contato_text',
+        'contato_phone',
+        'contato_email',
+        'contato_address',
     ];
 
     /**

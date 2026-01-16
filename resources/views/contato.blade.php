@@ -6,7 +6,7 @@
 <section class="section">
   <div class="container">
     <h1 style="margin:0 0 .5rem;">Contato</h1>
-    <p class="muted" style="margin-top:.25rem">Diga como podemos ajudar. Respondemos rapidinho 🙂</p>
+    <p class="muted" style="margin-top:.25rem">{{ $home['contato_text'] }}</p>
 
     <div class="grid" style="grid-template-columns: 1fr 1fr; align-items:start;">
       <!-- Formulário -->
@@ -64,10 +64,10 @@
         <div class="card" style="margin-top:1rem;">
           <div class="body" style="display:flex; gap:1rem; flex-wrap:wrap;">
             <a class="btn red" target="_blank" rel="noopener"
-               href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
+               href="https://wa.me/{{ preg_replace('/[^0-9]/','', $home['whatsapp_business']) }}?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
               Falar no WhatsApp
             </a>
-            <a class="btn secondary" href="tel:+5584988004885">Ligar agora</a>
+            <a class="btn secondary" href="tel:{{ $home['phone'] }}">Ligar agora</a>
           </div>
         </div>
       </div>
@@ -78,11 +78,9 @@
           <div class="body">
             <strong>Nosso endereço</strong>
             <p style="margin:.25rem 0 0">
-              Logradouro: Rua Seis de Janeiro, 1837<br>
-              Bairro: Santo Antonio<br>
-              Município/UF: Mossoró, RN<br>
-              Tel: <a href="tel:+5584988004885">(84) 98800-4885</a> •
-              <a href="mailto:contato@castel.com.br">contato@castel.com.br</a>
+              {{ $home['endereco'] }}<br>
+              Tel: <a href="tel:{{ $home['phone'] }}">{{ $home['phone'] }}</a> •
+              <a href="mailto:{{ $home['email'] }}">{{ $home['email'] }}</a>
             </p>
           </div>
         </div>
@@ -90,7 +88,7 @@
         <div class="card" style="margin-top:1rem;">
           <div class="body">
             <strong>Horário de atendimento</strong>
-            <p class="muted" style="margin:.25rem 0 0">Seg a Sex, 8h às 18h • Sáb, 8h às 12h</p>
+            <p class="muted" style="margin:.25rem 0 0">{{ $home['horario_atendimento'] }}</p>
           </div>
         </div>
       </div>
@@ -152,12 +150,12 @@ ${data.mensagem}`;
       const modo = form.dataset.send || 'whatsapp';
 
       if(modo === 'email'){
-        const mailto = 'mailto:contato@castel.com.br'
+        const mailto = 'mailto:{{ $home['email'] }}'
           + '?subject=' + encodeURIComponent('Contato — ' + data.assunto)
           + '&body=' + encodeURIComponent(texto);
         window.location.href = mailto;
       }else{
-        const wa = 'https://wa.me/5584994618126?text=' + encodeURIComponent(texto);
+        const wa = 'https://wa.me/{{ preg_replace('/[^0-9]/ ','', $home['whatsapp_business']) }}?text=' + encodeURIComponent(texto);
         window.open(wa, '_blank', 'noopener');
       }
 
