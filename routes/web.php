@@ -1,17 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Home;
 use App\Models\About;
 
 Route::get('/', function () {
-    $home = Home::first()->toArray();
-    return view('index',compact('home'));
+    return view('index');
 });
 
 Route::get('/index', function () {
-    $home = Home::first()->toArray();
-    return view('index',compact('home'));
+    return view('index');
 })->name('index');
 
 Route::get('/avulsos', function () {
@@ -23,8 +20,18 @@ Route::get('/contato', function () {
 })->name('contato');
 
 Route::get('/sobre', function () {
-    $sobre = About::first()->toArray();
-    return view('sobre',compact('sobre'));
+    $sobre = About::first();
+    if (!$sobre) {
+        // Provide default values if no record is found
+        $sobre = new About([
+            'title' => 'Nossa História',
+            'sub_title' => 'Conheça a história da nossa empresa.',
+            'anos_historia' => 0,
+            'obras_entregues' => 0,
+            'text_about' => 'Em breve, compartilharemos a nossa trajetória com você.',
+        ]);
+    }
+    return view('sobre', ['sobre' => $sobre->toArray()]);
 })->name('sobre');
 
 Route::get('/empreendimentos', function () {

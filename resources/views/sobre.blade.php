@@ -8,9 +8,9 @@
 <section class="hero" role="region" aria-label="Apresentação institucional">
 <video src="/media/VideoCastelSobre.mp4" autoplay muted loop playsinline></video>
   <div class="content">
-    <h1 style="color:var(--brand-blue); text-shadow:none">Construindo confiança, entregando qualidade</h1>
+    <h1 style="color:var(--brand-blue); text-shadow:none">{{ $sobre['title'] }}</h1>
     <p class="lead">
-      Há mais de uma década transformando terrenos em lares, com transparência, prazo e foco total no cliente.
+      {{ $sobre['sub_title'] }}
     </p>
     <div class="actions">
       <a class="cta" href="{{ route('empreendimentos') }}">Conheça nossos empreendimentos</a>
@@ -28,7 +28,7 @@
         <div class="muted">anos de história</div>
       </div>
       <div class="kpi reveal">
-        <div class="num" data-kpi="35">35+</div>
+        <div class="num" data-kpi="{{ $sobre['obras_entregues'] }}">{{ $sobre['obras_entregues'] }}+</div>
         <div class="muted">obras entregues</div>
       </div>
     </div>
@@ -41,9 +41,7 @@
     <h2>Nossa História</h2>
     <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
       <div class="reveal">
-        <p class="lead">Tudo começou a cerca de 16 anos, quando dois jovens empreendedores, <strong>Einstein Preston</strong> e <strong>Marcel Duarte</strong>, amigos de longas datas e que já vinham de outros negócios, apostaram dessa vez no setor imobiliário sócios da JR Imóveis, que logo prosperaram no setor.</p>
-        <p>Muito inquietos e logo perceberam que podiam ir mais longe, então decidiram entrar da área da construção civil, acreditam em uma região da cidade onde todos diziam que era uma loucura, loucura essa que virou um desafio que se tornou um case de sucesso.</p>
-        <p>Desde então a Castel Construções e Incorporações vem se destacando cada vez mais no mercado de Mossoró e Região pela qualidade e compromisso com seus empreendimentos.</p>
+        <p class="lead">{{ $sobre['text_about'] }}</p>
       </div>
       <div class="reveal">
         <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?q=80&w=1200&auto=format&fit=crop" alt="Equipe da Castel Construções" style="border-radius: 8px; width: 100%; height: auto;">

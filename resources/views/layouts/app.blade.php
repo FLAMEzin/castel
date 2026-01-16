@@ -18,11 +18,11 @@
   <header class="header" role="banner">
     <div class="topbar" aria-label="Informações de contato">
       <div class="container">
-        <span>Atendimento 24/7</span>
+        <span>{{ $home['horario_atendimento'] }}</span>
         <span class="sep">•</span>
-        <a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." style="color:#fff">(84) 98800-4885</a>
+        <a href="https://wa.me/{{ $home['whatsapp_business'] }}" style="color:#fff">{{ $home['phone'] }}</a>
         <span class="sep">•</span>
-        <a href="mailto:contato@castel.com.br" style="color:#fff">contato@castel.com.br</a>
+        <a href="mailto:{{ $home['email'] }}" style="color:#fff">{{ $home['email'] }}</a>
       </div>
     </div>
     <div class="container navbar" role="navigation" aria-label="Principal">
@@ -55,8 +55,8 @@
         </div>
         <div>
           <h3 style="margin:.25rem 0;">Contato</h3>
-          <p><a href="mailto:contato@castel.com.br">contato@castel.com.br</a><br /><a href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">(84) 98800-4885</a></p>
-          <p>Logradouro: Rua Seis de Janeiro, 1837 <br>Bairro: Santo Antonio <br>Município/UF: Mossoró, RN</p>
+          <p><a href="mailto:{{ $home['email'] }}">{{ $home['email'] }}</a><br /><a href="https://wa.me/{{ $home['whatsapp_business'] }}">{{ $home['phone'] }}</a></p>
+          <p>{{ $home['endereco'] }}</p>
         </div>
         <div>
           <h3 style="margin:.25rem 0;">Navegação</h3>
@@ -68,7 +68,7 @@
   </footer>
 
   <!-- WhatsApp FAB -->
-  <a id="wa-fab" class="whatsapp-fab" aria-label="Fale no WhatsApp" target="_blank" rel="noopener" href="https://wa.me/5584994618126?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Castel%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">
+  <a id="wa-fab" class="whatsapp-fab" aria-label="Fale no WhatsApp" target="_blank" rel="noopener" href="https://wa.me/{{ $home['whatsapp_business'] }}">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.8 11.8 0 0012 0C5.39 0 .03 5.36.03 12a11.9 11.9 0 001.6 6L0 24l6.2-1.62a11.9 11.9 0 005.8 1.48h.01c6.61 0 11.97-5.36 11.97-12 0-3.2-1.25-6.2-3.46-8.38zM12 22.03h-.01a9.96 9.96 0 01-5.08-1.4l-.36-.21-3.68.96.98-3.58-.24-.37A9.97 9.97 0 012.03 12C2.03 6.5 6.5 2.03 12 2.03c2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 012.92 7.07c0 5.5-4.47 9.97-9.93 9.97zm5.49-7.43c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07a8.08 8.08 0 01-2.38-1.47 9 9 0 01-1.67-2.06c-.18-.3 0-.46.14-.61.14-.15.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.57-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.37s-1.04 1.02-1.04 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.32.17-1.45-.07-.13-.27-.2-.57-.35z"/></svg>
   </a>
 
