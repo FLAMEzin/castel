@@ -5,7 +5,8 @@ use App\Models\Home;
 use App\Models\About;
 
 Route::get('/', function () {
-    return view('index');
+    $home = Home::first()->toArray();
+    return view('index',compact('home'));
 });
 
 Route::get('/index', function () {
