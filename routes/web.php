@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\About;
 use App\Models\Home;
+use App\Models\Servico;
 
 Route::get('/', function () {
     $home = Home::first();
@@ -81,7 +82,8 @@ Route::get('/depoimentos', function () {
 })->name('depoimentos');
 
 Route::get('/servicos', function () {
-    return view('servicos');
+    $servicos = Servico::all();
+    return view('servicos', ['servicos' => $servicos]);
 })->name('servicos');
 
 Route::get('/simulador', function () {

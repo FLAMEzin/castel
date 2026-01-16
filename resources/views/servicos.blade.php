@@ -31,24 +31,11 @@
     </div>
 
     <div class="grid cols-3">
-      <div class="service-card" data-service="Terraplanagem">
-        <figure><img src="/img/terraplenagem/terraplenagem.jpg" alt="Serviço de Terraplanagem" /><figcaption><h3>Terraplanagem</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
-      <div class="service-card" data-service="Perfuração de Estaca">
-        <figure><img src="/img/terraplenagem/perfuracao.jpg" alt="Serviço de Perfuração de Estaca" /><figcaption><h3>Perfuração de Estaca</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
-      <div class="service-card" data-service="Limpeza de Lote">
-        <figure><img src="/img/terraplenagem/limpeza.jpg" alt="Serviço de Limpeza de Lote" /><figcaption><h3>Limpeza de Lote</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
-      <div class="service-card" data-service="Drenagem">
-        <figure><img src="/img/terraplenagem/drenagem.jpg" alt="Serviço de Drenagem" /><figcaption><h3>Drenagem</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
-      <div class="service-card" data-service="Aterro">
-        <figure><img src="/img/terraplenagem/aterro.jpeg" alt="Serviço de Aterro" /><figcaption><h3>Aterro</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
-      <div class="service-card" data-service="Sondagem de Solo">
-        <figure><img src="/img/terraplenagem/sondagem.png" alt="Serviço de Sondagem de Solo" /><figcaption><h3>Sondagem de Solo</h3><span class="btn">Orçamento</span></figcaption></figure>
-      </div>
+      @foreach($servicos as $servico)
+        <div class="service-card" data-service="{{ $servico->title }}">
+          <figure><img src="{{ $servico->image_url }}" alt="Serviço de {{ $servico->title }}" /><figcaption><h3>{{ $servico->title }}</h3><span class="btn">Orçamento</span></figcaption></figure>
+        </div>
+      @endforeach
     </div>
 
   </div>
