@@ -1,15 +1,15 @@
 // ==============================
 // Castel • main.js
 // ==============================
-const $ = (s, el=document) => el.querySelector(s);
-const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
 const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
-function brl(n){ return isFinite(n) ? Number(n).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}) : "-"; }
+function brl(n) { return isFinite(n) ? Number(n).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "-"; }
 
 document.addEventListener("DOMContentLoaded", () => {
   const y = $("#year"); if (y) y.textContent = new Date().getFullYear();
   const burger = $(".hamburger"), nav = $(".nav");
-  on(burger, "click", ()=>{ nav?.classList.toggle("open"); burger.classList.toggle("open"); });
+  on(burger, "click", () => { nav?.classList.toggle("open"); burger.classList.toggle("open"); });
 
   wireInstagram();
   pageHome();
@@ -44,20 +44,27 @@ const EMPREENDIMENTOS = [
     incorporacao: "Castel Construções e Incorporações",
     registro: "R-01/12345",
   },
-  
+
 ];
 
 const DETAIL_BASE = "/empreendimento";
-const statusLabel = (s)=>({lancamento:"Lançamento",em_construcao:"Em construção",avulso:"Avulso",entregue:"Entregue"}[s]||s);
-const detailHref = (item)=> `${DETAIL_BASE}?slug=${encodeURIComponent(item.slug)}`;
+const statusLabel = (s) => ({ lancamento: "Lançamento", em_construcao: "Em construção", avulso: "Avulso", entregue: "Entregue" }[s] || s);
+const detailHref = (item) => `${DETAIL_BASE}?slug=${encodeURIComponent(item.slug)}`;
 
 // ---------------- Home (cards de destaque) ----------------
-function pageHome(){
+function pageHome() {
   const grid = $("#home-cards");
-  if(!grid) return;
+  if (!grid) return;
+
+  // Se o grid já tem conteúdo renderizado pelo servidor (Blade), não sobrescrever
+  if (grid.children.length > 0 && !grid.querySelector('.js-placeholder')) {
+    console.log('[Castel] Cards da home carregados do servidor, ignorando dados estáticos.');
+    return;
+  }
+
   grid.innerHTML = "";
   // pega 1-3 itens do dataset
-  EMPREENDIMENTOS.slice(0,3).forEach(it=>{
+  EMPREENDIMENTOS.slice(0, 3).forEach(it => {
     const el = document.createElement("article");
     el.className = "card";
     el.innerHTML = `
@@ -74,18 +81,25 @@ function pageHome(){
 }
 
 // -------------- Lista (empreendimentos) -------------------
-function pageEmpreendimentos(){
+function pageEmpreendimentos() {
   const grid = $("#grid-empreendimentos");
-  if(!grid) return;
+  if (!grid) return;
+
+  // Se o grid já tem conteúdo renderizado pelo servidor (Blade), não sobrescrever
+  // Isso permite que os dados dinâmicos do banco de dados sejam exibidos
+  if (grid.children.length > 0 && !grid.querySelector('.js-placeholder')) {
+    console.log('[Castel] Empreendimentos carregados do servidor, ignorando dados estáticos.');
+    return;
+  }
 
   const form = $("#form-filtro");
-  const render = (list)=>{
+  const render = (list) => {
     grid.innerHTML = "";
-    if (!list.length){
+    if (!list.length) {
       grid.innerHTML = '<p class="muted">Nenhum empreendimento encontrado.</p>';
       return;
     }
-    list.forEach(it=>{
+    list.forEach(it => {
       const card = document.createElement("article");
       card.className = "card";
       card.innerHTML = `
@@ -110,7 +124,7 @@ function pageEmpreendimentos(){
     });
   };
 
-  function filtrar(){
+  function filtrar() {
     const status = $("#f-status")?.value || "";
     const cidade = ($("#f-cidade")?.value || "").trim().toLowerCase();
     const min = parseInt($("#f-preco-min")?.value || "0", 10);
@@ -128,20 +142,27 @@ function pageEmpreendimentos(){
     render(out);
   }
 
-  on(form,"input",filtrar);
+  on(form, "input", filtrar);
   render(EMPREENDIMENTOS);
 }
 
 // -------------- Detalhe (empreendimento) ------------------
-function pageEmpreendimento(){
+function pageEmpreendimento() {
   const container = $("#detalhe-empreendimento");
-  if(!container) return;
+  if (!container) return;
+
+  // Se o container já tem conteúdo renderizado pelo servidor (Blade), não sobrescrever
+  // Verifica se tem um h1 (título do empreendimento) que indica dados do servidor
+  if (container.querySelector('h1') || container.children.length > 2) {
+    console.log('[Castel] Detalhe do empreendimento carregado do servidor, ignorando dados estáticos.');
+    return;
+  }
 
   const qs = new URLSearchParams(location.search);
   const slug = qs.get("slug");
   const item = EMPREENDIMENTOS.find(e => e.slug === slug);
 
-  if(!item){
+  if (!item) {
     container.innerHTML = `
       <div class="card"><div class="body">
         <h1 style="margin:0;">Empreendimento não encontrado</h1>
@@ -153,17 +174,17 @@ function pageEmpreendimento(){
 
   document.title = `${item.nome} • Castel`;
 
-  const galImgs = (item.imagens||[]).map(src=>(
+  const galImgs = (item.imagens || []).map(src => (
     `<img src="${src}" alt="Galeria ${item.nome}" style="width:100%; height:220px; object-fit:cover; border-radius:12px;">`
   )).join("");
 
-  const plantas = (item.plantas||[]).map(src=>(
+  const plantas = (item.plantas || []).map(src => (
     `<img src="${src}" alt="Planta ${item.nome}" style="width:100%; height:220px; object-fit:cover; border-radius:12px;">`
   )).join("");
 
-  const comod = (item.comodidades||[]).map(c=>`<span class="tag badge">${c}</span>`).join("");
+  const comod = (item.comodidades || []).map(c => `<span class="tag badge">${c}</span>`).join("");
 
-  const mapa = (item.coords && typeof item.coords.lat==="number")
+  const mapa = (item.coords && typeof item.coords.lat === "number")
     ? `<iframe title="Mapa ${item.nome}" loading="lazy" allowfullscreen
          referrerpolicy="no-referrer-when-downgrade"
          src="https://www.google.com/maps?q=${encodeURIComponent(`${item.coords.lat},${item.coords.lng}`)}&z=15&output=embed"
@@ -243,23 +264,23 @@ function pageEmpreendimento(){
 }
 
 // -------------------- Simulador ---------------------------
-function pageSimulador(){
+function pageSimulador() {
   const form = $("#form-simulador");
-  if(!form) return;
+  if (!form) return;
   const out = $("#sim-out");
 
-  function recalc(){
+  function recalc() {
     const valor = Number(form.valor.value || 0);
     const entrada = Number(form.entrada.value || 0);
     const jurosAA = Number(form.juros.value || 0);
     const meses = Number(form.meses.value || 0);
     const pv = Math.max(valor - entrada, 0);
-    const i = (jurosAA/100) / 12;
-    if (pv <= 0 || i <= 0 || meses <= 0){
+    const i = (jurosAA / 100) / 12;
+    if (pv <= 0 || i <= 0 || meses <= 0) {
       out.innerHTML = `<p class="muted">Preencha os campos para simular.</p>`;
       return;
     }
-    const parcela = pv * (i * Math.pow(1+i, meses)) / (Math.pow(1+i, meses) - 1);
+    const parcela = pv * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1);
 
     out.innerHTML = `
       <div class="card" style="padding:1rem;">
@@ -280,11 +301,11 @@ function pageSimulador(){
 }
 
 // --------------- Integração Instagram (dummy) ------------
-function wireInstagram(){
-  document.addEventListener("click", (e)=>{
+function wireInstagram() {
+  document.addEventListener("click", (e) => {
     const card = e.target.closest("[data-instagram-profile]");
-    if(!card) return;
+    if (!card) return;
     const handle = card.getAttribute("data-instagram-profile");
-    window.open(`https://instagram.com/${handle}`, "_blank","noopener");
+    window.open(`https://instagram.com/${handle}`, "_blank", "noopener");
   });
 }

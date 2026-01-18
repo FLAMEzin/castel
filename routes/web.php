@@ -18,7 +18,8 @@ Route::get('/', function () {
             'contato_address' => 'Endereço de exemplo',
         ]);
     }
-    return view('index', ['home' => $home]);
+    $destaques = Empreendimento::where('destaque_home', true)->get();
+    return view('index', ['home' => $home, 'destaques' => $destaques]);
 });
 
 Route::get('/index', function () {
@@ -33,7 +34,8 @@ Route::get('/index', function () {
             'contato_address' => 'Endereço de exemplo',
         ]);
     }
-    return view('index', ['home' => $home]);
+    $destaques = Empreendimento::where('destaque_home', true)->get();
+    return view('index', ['home' => $home, 'destaques' => $destaques]);
 })->name('index');
 
 Route::get('/avulsos', function () {
@@ -93,8 +95,18 @@ Route::get('/simulador', function () {
 })->name('simulador');
 
 Route::get('/empreendimento/{id}', function ($id) {
-    $empreendimento = Empreendimento::findOrFail($id);
-    return view('empreendimento', ['empreendimento' => $empreendimento]);
+    $empreendimento = Empreendimento::with('fotos')->findOrFail($id);
+    $home = Home::first();
+    if (!$home) {
+        $home = new Home([
+            'email' => 'contato@castel.com.br',
+            'phone' => '(84) 99461-8126',
+            'endereco' => 'Natal/RN',
+            'whatsapp_business' => '5584994618126',
+            'horario_atendimento' => 'Seg-Sex: 8h às 18h',
+        ]);
+    }
+    return view('empreendimento', ['empreendimento' => $empreendimento, 'home' => $home]);
 })->name('empreendimento');
 
 // Rotas do Simulador
