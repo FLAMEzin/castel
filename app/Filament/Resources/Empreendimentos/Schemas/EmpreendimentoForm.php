@@ -51,9 +51,13 @@ class EmpreendimentoForm
                     ->label('Descrição'),
                 Checkbox::make('destaque_home')
                     ->label('Destaque na Home'),
+                TextInput::make('foto_capa')
+                    ->label('Foto da Capa (URL)'),
+                TextInput::make('foto_planta')
+                    ->label('Foto da Planta (URL)'),
                 Repeater::make('fotos')
                     ->relationship('fotos')
-                    ->label('Fotos')
+                    ->label('Fotos do Empreendimento (Galeria)')
                     ->schema([
                         TextInput::make('file_name')
                             ->label('URL da Foto')

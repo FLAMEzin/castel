@@ -27,6 +27,8 @@ class Empreendimento extends Model
         'valor',
         'destaque_home',
         'tags',
+        'foto_capa',
+        'foto_planta',
     ];
 
     /**

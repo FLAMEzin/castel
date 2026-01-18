@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\About;
 use App\Models\Home;
 use App\Models\Servico;
+use App\Models\Empreendimento;
 
 Route::get('/', function () {
     $home = Home::first();
@@ -17,7 +18,7 @@ Route::get('/', function () {
             'contato_address' => 'Endereço de exemplo',
         ]);
     }
-    return view('index', ['home' => $home->toArray()]);
+    return view('index', ['home' => $home]);
 });
 
 Route::get('/index', function () {
@@ -32,7 +33,7 @@ Route::get('/index', function () {
             'contato_address' => 'Endereço de exemplo',
         ]);
     }
-    return view('index', ['home' => $home->toArray()]);
+    return view('index', ['home' => $home]);
 })->name('index');
 
 Route::get('/avulsos', function () {
@@ -51,7 +52,7 @@ Route::get('/contato', function () {
             'contato_address' => 'Endereço de exemplo',
         ]);
     }
-    return view('contato', ['home' => $home->toArray()]);
+    return view('contato', ['home' => $home]);
 })->name('contato');
 
 Route::get('/sobre', function () {
@@ -66,11 +67,12 @@ Route::get('/sobre', function () {
             'text_about' => 'Em breve, compartilharemos a nossa trajetória com você.',
         ]);
     }
-    return view('sobre', ['sobre' => $sobre->toArray()]);
+    return view('sobre', ['sobre' => $sobre]);
 })->name('sobre');
 
 Route::get('/empreendimentos', function () {
-    return view('empreendimentos');
+    $empreendimentos = Empreendimento::all();
+    return view('empreendimentos', ['empreendimentos' => $empreendimentos]);
 })->name('empreendimentos');
 
 Route::get('/reservas', function () {
@@ -90,8 +92,9 @@ Route::get('/simulador', function () {
     return view('simulador');
 })->name('simulador');
 
-Route::get('/empreendimento', function () {
-    return view('empreendimento');
+Route::get('/empreendimento/{id}', function ($id) {
+    $empreendimento = Empreendimento::findOrFail($id);
+    return view('empreendimento', ['empreendimento' => $empreendimento]);
 })->name('empreendimento');
 
 // Rotas do Simulador
