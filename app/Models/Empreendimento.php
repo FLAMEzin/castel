@@ -26,6 +26,7 @@ class Empreendimento extends Model
         'local_long',
         'valor',
         'destaque_home',
+        'tags',
     ];
 
     /**
@@ -40,6 +41,7 @@ class Empreendimento extends Model
             'local_lat' => 'float',
             'local_long' => 'float',
             'valor' => 'float',
+            'tags' => 'array',
         ];
     }
 
