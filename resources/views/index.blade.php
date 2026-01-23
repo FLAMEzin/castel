@@ -99,7 +99,34 @@
 
 @section('content')
   <section class="hero" role="region" aria-label="Apresentação">
-    <video src="/media/VideoCastelHome.mp4" autoplay muted loop playsinline></video>
+    @php
+      // Garantir acesso seguro seja objeto ou array
+      $videoUrl = is_array($home) ? ($home['video_capa'] ?? null) : ($home->video_capa ?? null);
+
+      // Se ainda for nulo, tenta fallback do model
+      if (!$videoUrl && $home instanceof \App\Models\Home) {
+        $videoUrl = $home->video_capa;
+      }
+
+      $isYoutube = $videoUrl && (str_contains($videoUrl, 'youtube.com') || str_contains($videoUrl, 'youtu.be'));
+      $youtubeId = null;
+
+      if ($isYoutube) {
+        if (preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $videoUrl, $matches)) {
+          $youtubeId = $matches[1];
+        }
+      }
+    @endphp
+    @if($isYoutube && $youtubeId)
+      <div class="youtube-bg-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/{{ $youtubeId }}?autoplay=1&mute=1&loop=1&playlist={{ $youtubeId }}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+      </div>
+    @else
+      <video src="{{ $videoUrl ?: '/media/VideoCastelHome.mp4' }}" autoplay muted loop playsinline></video>
+    @endif
     <div class="content">
       <h1 style="color:var(--brand-blue); text-shadow:none">{{ $home['title'] }}</h1>
       <p class="lead">{{ $home['sub_title'] }}</p>

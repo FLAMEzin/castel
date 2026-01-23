@@ -23,11 +23,18 @@ class HomeForm
                 TextInput::make('whatsapp_business')
                     ->required(),
                 TextInput::make('title')
+                    ->label('Título da Home')
                     ->required(),
                 TextInput::make('sub_title')
+                    ->label('Subtítulo da Home')
                     ->required(),
                 TextInput::make('horario_atendimento')
                     ->required(),
+
+                TextInput::make('video_capa')
+                    ->label('URL do Vídeo de Capa')
+                    ->placeholder('https://exemplo.com/video.mp4 ou /media/video.mp4')
+                    ->helperText('Cole a URL do vídeo de fundo da página inicial. Deixe vazio para usar o vídeo padrão.'),
             ]);
     }
 }

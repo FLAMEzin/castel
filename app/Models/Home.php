@@ -22,6 +22,7 @@ class Home extends Model
         'title',
         'sub_title',
         'horario_atendimento',
+        'video_capa',
         'card_title',
         'card_text',
         'contato_text',

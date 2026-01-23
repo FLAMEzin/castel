@@ -20,6 +20,7 @@ class About extends Model
         'anos_historia',
         'obras_entregues',
         'text_about',
+        'video_capa',
     ];
 
     /**
