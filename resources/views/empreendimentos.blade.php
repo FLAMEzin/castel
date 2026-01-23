@@ -334,7 +334,7 @@
             <div id="grid-empreendimentos" class="grid cols-3" aria-live="polite">
                 @forelse ($empreendimentos as $empreendimento)
                     <article class="card" data-nome="{{ strtolower($empreendimento->title) }}"
-                        data-tipo="{{ $empreendimento->tipo }}" data-cidade="{{ $empreendimento->cidade }}"
+                        data-tipo="{{ $empreendimento->tipoImovel?->nome }}" data-cidade="{{ $empreendimento->cidade }}"
                         data-quartos="{{ $empreendimento->quartos ?? 0 }}" data-valor="{{ $empreendimento->valor ?? 0 }}"
                         data-tags="{{ is_array($empreendimento->tags) ? implode(',', $empreendimento->tags) : '' }}">
                         <a class="thumb-link" href="{{ route('empreendimento', ['id' => $empreendimento->id]) }}"
@@ -354,8 +354,8 @@
                         </a>
                         <div class="body">
                             <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-                                @if($empreendimento->tipo)
-                                    <span class="badge red">{{ ucfirst($empreendimento->tipo) }}</span>
+                                @if($empreendimento->tipoImovel)
+                                    <span class="badge red">{{ $empreendimento->tipoImovel->nome }}</span>
                                 @endif
                                 @if($empreendimento->cidade)
                                     <span

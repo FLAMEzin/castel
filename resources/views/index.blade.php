@@ -137,8 +137,8 @@
                 </a>
                 <div class="body">
                   <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-                    @if($empreendimento->tipo)
-                      <span class="badge red">{{ ucfirst($empreendimento->tipo) }}</span>
+                    @if($empreendimento->tipoImovel)
+                      <span class="badge red">{{ $empreendimento->tipoImovel->nome }}</span>
                     @endif
                     <span
                       class="badge">{{ $empreendimento->cidade }}{{ $empreendimento->estado ? '/' . $empreendimento->estado : '' }}</span>

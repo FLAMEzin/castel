@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class TipoImovel extends Model
+{
+    /**
+     * The table associated with the model.
+     */
+    protected $table = 'tipos_imoveis';
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [
+        'nome',
+    ];
+
+    /**
+     * Get the empreendimentos for this tipo.
+     */
+    public function empreendimentos(): HasMany
+    {
+        return $this->hasMany(Empreendimento::class);
+    }
+}
+

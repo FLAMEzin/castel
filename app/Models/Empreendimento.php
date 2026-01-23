@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Empreendimento extends Model
@@ -18,7 +19,7 @@ class Empreendimento extends Model
     protected $fillable = [
         'title',
         'descricao',
-        'tipo',
+        'tipo_imovel_id',
         'area',
         'quartos',
         'cidade',
@@ -31,7 +32,6 @@ class Empreendimento extends Model
         'destaque_home',
         'tags',
         'foto_capa',
-        'foto_planta',
     ];
 
     /**
@@ -43,6 +43,7 @@ class Empreendimento extends Model
     {
         return [
             'id' => 'integer',
+            'tipo_imovel_id' => 'integer',
             'local_lat' => 'float',
             'local_long' => 'float',
             'valor' => 'float',
@@ -50,8 +51,20 @@ class Empreendimento extends Model
         ];
     }
 
+    /**
+     * Get the tipo de imóvel.
+     */
+    public function tipoImovel(): BelongsTo
+    {
+        return $this->belongsTo(TipoImovel::class);
+    }
+
+    /**
+     * Get the fotos.
+     */
     public function fotos(): HasMany
     {
         return $this->hasMany(Foto::class);
     }
 }
+

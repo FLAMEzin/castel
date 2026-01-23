@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Empreendimentos\Schemas;
 
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
@@ -23,17 +24,30 @@ class EmpreendimentoForm
                     ->required()
                     ->maxLength(255),
 
-                Select::make('tipo')
+                Select::make('tipo_imovel_id')
                     ->label('Tipo de Imóvel')
-                    ->options([
-                        'apartamento' => 'Apartamento',
-                        'casa' => 'Casa',
-                        'terreno' => 'Terreno/Lote',
-                        'comercial' => 'Comercial',
-                        'cobertura' => 'Cobertura',
-                        'studio' => 'Studio',
+                    ->relationship('tipoImovel', 'nome')
+                    ->searchable()
+                    ->preload()
+                    ->native(false)
+                    ->createOptionForm([
+                        TextInput::make('nome')
+                            ->label('Nome do Tipo')
+                            ->placeholder('Ex: Flat, Kitnet, Galpão...')
+                            ->required()
+                            ->maxLength(100)
+                            ->unique('tipos_imoveis', 'nome'),
                     ])
-                    ->native(false),
+                    ->createOptionModalHeading('Criar Novo Tipo de Imóvel')
+                    ->editOptionForm([
+                        TextInput::make('nome')
+                            ->label('Nome do Tipo')
+                            ->required()
+                            ->maxLength(100)
+                            ->unique('tipos_imoveis', 'nome', ignoreRecord: true),
+                    ])
+                    ->editOptionModalHeading('Editar Tipo de Imóvel')
+                    ->helperText('Selecione um tipo, crie novo (+) ou edite o selecionado (lápis)'),
 
                 TextInput::make('area')
                     ->label('Área (m²)')
@@ -139,16 +153,20 @@ class EmpreendimentoForm
                     ->searchable()
                     ->placeholder('Selecione o estado'),
 
-                // Imagens
-                TextInput::make('foto_capa')
-                    ->label('Foto de Capa (URL)')
-                    ->placeholder('https://exemplo.com/imagem-capa.jpg')
-                    ->helperText('Cole a URL da imagem principal do empreendimento'),
-
-                TextInput::make('foto_planta')
-                    ->label('Foto da Planta Baixa (URL)')
-                    ->placeholder('https://exemplo.com/planta.jpg')
-                    ->helperText('Cole a URL da imagem da planta baixa'),
+                // Imagens - Upload direto para o storage
+                FileUpload::make('foto_capa')
+                    ->label('Foto de Capa')
+                    ->image()
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('1200')
+                    ->imageResizeTargetHeight('675')
+                    ->directory('empreendimentos/capas')
+                    ->disk('public')
+                    ->visibility('public')
+                    ->maxSize(5120) // 5MB
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->helperText('Envie a imagem principal do empreendimento (JPG, PNG ou WebP, máx. 5MB)'),
 
                 // Galeria de Fotos
                 Repeater::make('fotos')
@@ -156,9 +174,17 @@ class EmpreendimentoForm
                     ->label('Galeria de Fotos')
                     ->helperText('Adicione fotos extras para a galeria do empreendimento')
                     ->schema([
-                        TextInput::make('file_name')
-                            ->label('URL da Foto')
-                            ->placeholder('https://exemplo.com/foto.jpg')
+                        FileUpload::make('file_name')
+                            ->label('Foto')
+                            ->image()
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1200')
+                            ->imageResizeTargetHeight('800')
+                            ->directory('empreendimentos/galeria')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->maxSize(5120) // 5MB
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->required(),
                         TextInput::make('sub_title')
                             ->label('Legenda')

@@ -13,7 +13,7 @@ class EmpreendimentosTable
         return $table
             ->columns([
                 TextColumn::make('title')->label('Título')->searchable(),
-                TextColumn::make('tipo')->label('Tipo'),
+                TextColumn::make('tipoImovel.nome')->label('Tipo')->searchable(),
                 TextColumn::make('cidade')->label('Cidade')->searchable(),
                 BooleanColumn::make('destaque_home')->label('Destaque na Home'),
             ]);

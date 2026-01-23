@@ -118,53 +118,233 @@
       border-radius: 2px;
     }
 
-    .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+    /* Galeria estilo Amazon */
+    .gallery-amazon {
+      margin-bottom: 2rem;
     }
 
-    .galeria-item {
+    .gallery-main {
       position: relative;
+      width: 100%;
+      height: 450px;
+      border-radius: 16px;
       overflow: hidden;
-      border-radius: 12px;
-      aspect-ratio: 4/3;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      cursor: zoom-in;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     }
 
-    .galeria-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .galeria-item img {
+    .gallery-main img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.3s ease;
     }
 
-    .galeria-item:hover img {
-      transform: scale(1.1);
+    .gallery-main:hover img {
+      transform: scale(1.02);
     }
 
-    .galeria-item .overlay {
+    .gallery-main .zoom-hint {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       opacity: 0;
       transition: opacity 0.3s ease;
+    }
+
+    .gallery-main:hover .zoom-hint {
+      opacity: 1;
+    }
+
+    .gallery-thumbnails {
       display: flex;
-      align-items: flex-end;
-      padding: 1rem;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .gallery-thumbnails::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .gallery-thumbnails::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .gallery-thumbnails::-webkit-scrollbar-thumb {
+      background: #133876;
+      border-radius: 3px;
+    }
+
+    .gallery-thumb {
+      flex-shrink: 0;
+      width: 80px;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+
+    .gallery-thumb:hover {
+      opacity: 1;
+      border-color: #133876;
+    }
+
+    .gallery-thumb.active {
+      opacity: 1;
+      border-color: #E31E24;
+      box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-counter {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(0, 0, 0, 0.7);
       color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 500;
     }
 
-    .galeria-item:hover .overlay {
-      opacity: 1;
+    /* Modal Lightbox */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-caption {
+      margin-top: 1rem;
+      color: white;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .lightbox-prev {
+      left: -80px;
+    }
+
+    .lightbox-next {
+      right: -80px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
     }
 
     .sidebar-card {
@@ -316,15 +496,53 @@
         {{-- Coluna Principal --}}
         <div class="col-main">
 
-          {{-- Imagem de Capa --}}
-          @if($empreendimento->foto_capa)
-            @php
+          {{-- Galeria de Fotos estilo Amazon --}}
+          @php
+            // Construir array de todas as imagens (capa + galeria)
+            $todasImagens = collect();
+
+            if ($empreendimento->foto_capa) {
               $capaUrl = Str::startsWith($empreendimento->foto_capa, 'http')
                 ? $empreendimento->foto_capa
                 : asset('storage/' . $empreendimento->foto_capa);
-            @endphp
-            <div class="empreendimento-header">
-              <img src="{{ $capaUrl }}" alt="{{ $empreendimento->title }}" class="empreendimento-capa">
+              $todasImagens->push(['url' => $capaUrl, 'caption' => 'Foto principal']);
+            }
+
+            foreach ($empreendimento->fotos as $foto) {
+              $fotoUrl = Str::startsWith($foto->file_name, 'http')
+                ? $foto->file_name
+                : asset('storage/' . $foto->file_name);
+              $todasImagens->push(['url' => $fotoUrl, 'caption' => $foto->sub_title ?? '']);
+            }
+          @endphp
+
+          @if($todasImagens->count() > 0)
+            <div class="gallery-amazon">
+              {{-- Imagem Principal --}}
+              <div class="gallery-main" onclick="openLightbox(currentGalleryIndex)">
+                <img id="gallery-main-image" src="{{ $todasImagens->first()['url'] }}" alt="{{ $empreendimento->title }}">
+                <span class="gallery-counter" id="gallery-counter">1 / {{ $todasImagens->count() }}</span>
+                <span class="zoom-hint">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                    <path d="M11 8v6M8 11h6" />
+                  </svg>
+                  Clique para ampliar
+                </span>
+              </div>
+
+              {{-- Miniaturas --}}
+              @if($todasImagens->count() > 1)
+                <div class="gallery-thumbnails">
+                  @foreach($todasImagens as $index => $imagem)
+                    <div class="gallery-thumb {{ $index === 0 ? 'active' : '' }}" onclick="setMainImage({{ $index }})"
+                      data-url="{{ $imagem['url'] }}" data-caption="{{ $imagem['caption'] }}">
+                      <img src="{{ $imagem['url'] }}" alt="{{ $imagem['caption'] ?: 'Foto ' . ($index + 1) }}">
+                    </div>
+                  @endforeach
+                </div>
+              @endif
             </div>
           @endif
 
@@ -332,12 +550,12 @@
 
           {{-- Badges de Informações --}}
           <div class="badge-container">
-            @if($empreendimento->tipo)
+            @if($empreendimento->tipoImovel)
               <span class="badge-premium tipo">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                 </svg>
-                {{ ucfirst($empreendimento->tipo) }}
+                {{ $empreendimento->tipoImovel->nome }}
               </span>
             @endif
             @if($empreendimento->cidade)
@@ -383,45 +601,7 @@
             </div>
           @endif
 
-          {{-- Galeria de Fotos --}}
-          @if($empreendimento->fotos->count() > 0)
-            <section style="margin-top: 3rem;">
-              <h3 class="section-title">Galeria de Fotos</h3>
-              <div class="galeria-grid">
-                @foreach($empreendimento->fotos as $foto)
-                  @php
-                    $fotoUrl = Str::startsWith($foto->file_name, 'http')
-                      ? $foto->file_name
-                      : asset('storage/' . $foto->file_name);
-                  @endphp
-                  <a href="{{ $fotoUrl }}" target="_blank" rel="noopener" class="galeria-item">
-                    <img src="{{ $fotoUrl }}" alt="{{ $foto->sub_title ?? 'Foto do empreendimento' }}" loading="lazy">
-                    <div class="overlay">
-                      {{ $foto->sub_title ?? 'Ver imagem' }}
-                    </div>
-                  </a>
-                @endforeach
-              </div>
-            </section>
-          @endif
 
-          {{-- Planta Baixa --}}
-          @if($empreendimento->foto_planta)
-            @php
-              $plantaUrl = Str::startsWith($empreendimento->foto_planta, 'http')
-                ? $empreendimento->foto_planta
-                : asset('storage/' . $empreendimento->foto_planta);
-            @endphp
-            <section style="margin-top: 3rem;">
-              <h3 class="section-title">Planta Baixa</h3>
-              <a href="{{ $plantaUrl }}" target="_blank" rel="noopener" class="galeria-item"
-                style="aspect-ratio: 16/10; max-width: 600px;">
-                <img src="{{ $plantaUrl }}" alt="Planta baixa de {{ $empreendimento->title }}"
-                  style="object-fit: contain; background: #f8f9fa;">
-                <div class="overlay">Clique para ampliar</div>
-              </a>
-            </section>
-          @endif
 
           {{-- Mapa de Localização --}}
           @if($empreendimento->rua && $empreendimento->cidade)
@@ -483,10 +663,7 @@
               <p class="price-display">Consulte-nos</p>
             @endif
 
-            <a href="{{ route('contato') }}?assunto=Interesse+em+{{ urlencode($empreendimento->title) }}"
-              class="btn-interesse">
-              Tenho Interesse
-            </a>
+
 
             <a href="https://wa.me/5584994618126?text={{ urlencode('Olá! Tenho interesse no empreendimento ' . $empreendimento->title . '. Pode me ajudar?') }}"
               target="_blank" rel="noopener" class="btn-whatsapp">
@@ -501,10 +678,10 @@
 
             <h4 style="margin: 0 0 0.5rem; font-size: 1rem; color: var(--brand-text, #1a1a2e);">Detalhes do Imóvel</h4>
             <ul class="details-list">
-              @if($empreendimento->tipo)
+              @if($empreendimento->tipoImovel)
                 <li>
                   <span class="label">Tipo</span>
-                  <span class="value">{{ ucfirst($empreendimento->tipo) }}</span>
+                  <span class="value">{{ $empreendimento->tipoImovel->nome }}</span>
                 </li>
               @endif
               @if($empreendimento->cidade)
@@ -531,7 +708,136 @@
         </div>
 
       </div>
-
-    </div>
   </main>
+
+  {{-- Modal Lightbox --}}
+  @if(isset($todasImagens) && $todasImagens->count() > 0)
+    <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox(event)">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <span class="lightbox-counter" id="lightbox-counter"></span>
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" aria-label="Anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <img id="lightbox-image" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" aria-label="Próximo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+      </div>
+    </div>
+  @endif
+@endsection
+
+@section('scripts')
+  <script>
+    // Galeria Amazon - seleção de imagem principal
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb');
+    const galleryMainImage = document.getElementById('gallery-main-image');
+    const galleryCounter = document.getElementById('gallery-counter');
+    let currentGalleryIndex = 0;
+    const totalGalleryImages = galleryThumbs.length || 1;
+
+    function setMainImage(index) {
+      currentGalleryIndex = index;
+      const thumb = galleryThumbs[index];
+      if (!thumb || !galleryMainImage) return;
+      
+      // Atualizar imagem principal
+      galleryMainImage.src = thumb.dataset.url;
+      
+      // Atualizar contador
+      if (galleryCounter) {
+        galleryCounter.textContent = `${index + 1} / ${totalGalleryImages}`;
+      }
+      
+      // Atualizar classe active nas miniaturas
+      galleryThumbs.forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+    }
+
+    // Lightbox functionality
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    let currentLightboxIndex = 0;
+
+    function openLightbox(index) {
+      if (!lightboxModal) return;
+      currentLightboxIndex = index;
+      updateLightboxImage();
+      lightboxModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.target !== lightboxModal) return;
+      if (!lightboxModal) return;
+      lightboxModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigateLightbox(direction) {
+      currentLightboxIndex += direction;
+      if (currentLightboxIndex < 0) currentLightboxIndex = totalGalleryImages - 1;
+      if (currentLightboxIndex >= totalGalleryImages) currentLightboxIndex = 0;
+      updateLightboxImage();
+      // Sincronizar com galeria principal
+      setMainImage(currentLightboxIndex);
+    }
+
+    function updateLightboxImage() {
+      // Se temos thumbs, usar eles
+      if (galleryThumbs.length > 0) {
+        const thumb = galleryThumbs[currentLightboxIndex];
+        if (!thumb) return;
+        lightboxImage.src = thumb.dataset.url;
+        lightboxImage.alt = thumb.dataset.caption || 'Foto do empreendimento';
+        lightboxCaption.textContent = thumb.dataset.caption || '';
+      } else if (galleryMainImage) {
+        // Caso só tenha a imagem de capa
+        lightboxImage.src = galleryMainImage.src;
+        lightboxImage.alt = 'Foto principal';
+        lightboxCaption.textContent = '';
+      }
+      
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${totalGalleryImages}`;
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+      if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    // Keyboard para galeria principal (setas quando lightbox fechado)
+    document.addEventListener('keydown', function(e) {
+      if (lightboxModal && lightboxModal.classList.contains('active')) return;
+      if (galleryThumbs.length === 0) return;
+      
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        let newIndex = currentGalleryIndex - 1;
+        if (newIndex < 0) newIndex = totalGalleryImages - 1;
+        setMainImage(newIndex);
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        let newIndex = currentGalleryIndex + 1;
+        if (newIndex >= totalGalleryImages) newIndex = 0;
+        setMainImage(newIndex);
+      }
+    });
+  </script>
 @endsection
