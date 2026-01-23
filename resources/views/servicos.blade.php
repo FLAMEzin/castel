@@ -218,7 +218,7 @@
         if (telefone) waMessage += `*Telefone:* ${telefone}\n`;
         if (mensagem) waMessage += `*Mensagem:* ${mensagem}\n`;
 
-        const waURL = `https://wa.me/5584994618126?text=${encodeURIComponent(waMessage)}`;
+        const waURL = `https://wa.me/{{ preg_replace('/[^0-9]/', '', $home['whatsapp_business']) }}?text=${encodeURIComponent(waMessage)}`;
 
         // Exibe a confirmação com SweetAlert2
         Swal.fire({

@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                     ]);
                 }
 
-                $view->with('home', $home->toArray());
+                $view->with('home', $home);
             });
         } catch (\Exception $e) {
             // In case the table doesn't exist yet during migrations

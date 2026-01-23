@@ -665,7 +665,7 @@
 
 
 
-            <a href="https://wa.me/5584994618126?text={{ urlencode('Olá! Tenho interesse no empreendimento ' . $empreendimento->title . '. Pode me ajudar?') }}"
+            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $home['whatsapp_business']) }}?text={{ urlencode('Olá! Tenho interesse no empreendimento ' . $empreendimento->title . '. Pode me ajudar?') }}"
               target="_blank" rel="noopener" class="btn-whatsapp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path
@@ -746,15 +746,15 @@
       currentGalleryIndex = index;
       const thumb = galleryThumbs[index];
       if (!thumb || !galleryMainImage) return;
-      
+
       // Atualizar imagem principal
       galleryMainImage.src = thumb.dataset.url;
-      
+
       // Atualizar contador
       if (galleryCounter) {
         galleryCounter.textContent = `${index + 1} / ${totalGalleryImages}`;
       }
-      
+
       // Atualizar classe active nas miniaturas
       galleryThumbs.forEach((t, i) => {
         t.classList.toggle('active', i === index);
@@ -806,7 +806,7 @@
         lightboxImage.alt = 'Foto principal';
         lightboxCaption.textContent = '';
       }
-      
+
       if (lightboxCounter) {
         lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${totalGalleryImages}`;
       }
@@ -822,10 +822,10 @@
     });
 
     // Keyboard para galeria principal (setas quando lightbox fechado)
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (lightboxModal && lightboxModal.classList.contains('active')) return;
       if (galleryThumbs.length === 0) return;
-      
+
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
         let newIndex = currentGalleryIndex - 1;
