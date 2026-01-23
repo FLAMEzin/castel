@@ -20,7 +20,8 @@ class HomeResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Página Inicial';
+    protected static ?string $modelLabel = 'Página Inicial';
+    protected static ?string $pluralModelLabel = 'Página Inicial';
 
     public static function form(Schema $schema): Schema
     {

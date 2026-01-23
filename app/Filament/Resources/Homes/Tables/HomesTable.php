@@ -19,15 +19,9 @@ class HomesTable
                     ->searchable(),
                 TextColumn::make('phone')
                     ->searchable(),
-                TextColumn::make('endereco')
-                    ->searchable(),
                 TextColumn::make('whatsapp_business')
                     ->searchable(),
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('sub_title')
-                    ->searchable(),
-                TextColumn::make('horario_atendimento')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

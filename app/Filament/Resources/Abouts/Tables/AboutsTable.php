@@ -14,25 +14,21 @@ class AboutsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->searchable(),
+                TextColumn::make('title'),
                 TextColumn::make('sub_title')
-                    ->searchable(),
+                    ->limit(50),
                 TextColumn::make('anos_historia')
-                    ->numeric()
-                    ->sortable(),
+                    ->numeric(),
                 TextColumn::make('obras_entregues')
-                    ->numeric()
-                    ->sortable(),
+                    ->numeric(),
                 TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->paginated(false)
             ->filters([
                 //
             ])

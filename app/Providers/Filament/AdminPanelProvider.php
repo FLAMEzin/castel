@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Forms\Components\Field;
+use Filament\Tables\Columns\Column;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -24,6 +26,8 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->globalSearch(false)
+            ->spa()
             ->default()
             ->id('admin')
             ->path('admin')
@@ -36,10 +40,18 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
+            ->bootUsing(function () {
+                Field::configureUsing(function (Field $field) {
+                    $field->translateLabel();
+                });
+
+                Column::configureUsing(function (Column $column) {
+                    $column->translateLabel();
+                });
+            })
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
