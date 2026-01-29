@@ -53,8 +53,7 @@
             </div>
 
             <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;">
-              <button class="btn" type="submit" data-send="whatsapp">Enviar por WhatsApp</button>
-              <button class="btn secondary" type="submit" data-send="email">Enviar por E-mail</button>
+              <button class="btn" type="submit" data-send="whatsapp">Enviar por WhatsApp</button>F
             </div>
 
             <p class="form-ok muted" hidden>Mensagem preparada! Abrimos seu app para envio.</p>
@@ -77,6 +76,38 @@
         <div>
           <div class="card">
             <div class="body">
+            {{-- Mapa de Localização --}}
+            @php
+              $enderecoUrl = urlencode($home['endereco']);
+
+              // Link para abrir no Google Maps
+              $googleMapsLink = "https://www.google.com/maps/search/" . $enderecoUrl;
+            @endphp
+            <section style="margin-top: 3rem;">
+              <h3 class="section-title">Localização</h3>
+              <p style="margin-bottom: 1rem; color: #666;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="vertical-align: middle; margin-right: 0.5rem;">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                {{ $home['endereco'] }}
+              </p>
+              <div class="mapa-container">
+                <iframe src="https://www.google.com/maps?q={{ $enderecoUrl }}&z=17&output=embed" width="100%" height="400"
+                  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+              <a href="{{ $googleMapsLink }}" target="_blank" rel="noopener"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: #133876; font-weight: 500;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+                Abrir no Google Maps
+              </a>
+            </section>
               <strong>Nosso endereço</strong>
               <p style="margin:.25rem 0 0">
                 {{ $home['endereco'] }}<br>
