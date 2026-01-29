@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources\Servicos\Schemas;
 
-use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Illuminate\Support\HtmlString;
 
 class ServicoForm
 {
@@ -15,21 +14,19 @@ class ServicoForm
             ->components([
                 TextInput::make('title')
                     ->required(),
-                TextInput::make('image_url')
-                    ->label('URL da Imagem')
-                    ->url()
-                    ->live(onBlur: true)
-                    ->required(),
-                Placeholder::make('image_preview')
-                    ->label('Prévia da Imagem')
-                    ->content(function ($get) {
-                        $url = $get('image_url');
-                        if ($url) {
-                            return new HtmlString('<img src="' . e($url) . '" style="max-width: 200px; max-height: 200px;">');
-                        }
-                        return null;
-                    })
-                    ->visible(fn ($get) => (bool) $get('image_url')),
+                FileUpload::make('image_url')
+                    ->label('Imagem do Serviço')
+                    ->image()
+                    ->required()
+                    ->imageResizeMode('cover')
+                    ->imageResizeTargetWidth('800')
+                    ->imageResizeTargetHeight('600')
+                    ->directory('servicos/capas')
+                    ->disk('public')
+                    ->visibility('public')
+                    ->maxSize(5120) // 5MB
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->helperText('Envie uma imagem para o serviço (JPG, PNG ou WebP, máx. 5MB)'),
             ]);
     }
 }

@@ -124,7 +124,7 @@
       <div class="grid cols-3">
         @foreach($servicos as $servico)
           <div class="service-card" data-service="{{ $servico->title }}">
-            <figure><img src="{{ $servico->image_url }}" alt="Serviço de {{ $servico->title }}" />
+            <figure><img src="{{asset('storage/' . $servico->image_url) }}" alt="Serviço de {{ $servico->title }}" />
               <figcaption>
                 <h3>{{ $servico->title }}</h3><span class="btn">Orçamento</span>
               </figcaption>
