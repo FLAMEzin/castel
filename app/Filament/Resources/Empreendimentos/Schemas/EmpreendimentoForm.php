@@ -157,6 +157,7 @@ class EmpreendimentoForm
                 FileUpload::make('foto_capa')
                     ->label('Foto de Capa')
                     ->image()
+                    ->required()
                     ->imageResizeMode('cover')
                     ->imageCropAspectRatio('16:9')
                     ->imageResizeTargetWidth('1200')
@@ -188,6 +189,7 @@ class EmpreendimentoForm
                             ->required(),
                         TextInput::make('sub_title')
                             ->label('Legenda')
+                            ->required()
                             ->placeholder('Ex: Vista da fachada'),
                     ])
                     ->grid(2)
