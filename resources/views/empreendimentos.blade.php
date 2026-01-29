@@ -257,12 +257,9 @@
                             <label>Tipo de Imóvel</label>
                             <select id="filtro-tipo">
                                 <option value="">Todos os tipos</option>
-                                <option value="apartamento">Apartamento</option>
-                                <option value="casa">Casa</option>
-                                <option value="terreno">Terreno/Lote</option>
-                                <option value="comercial">Comercial</option>
-                                <option value="cobertura">Cobertura</option>
-                                <option value="studio">Studio</option>
+                                @foreach($tiposImoveis as $tipo)
+                                    <option value="{{ $tipo->nome }}">{{ $tipo->nome }}</option>
+                                @endforeach
                             </select>
                         </div>
 

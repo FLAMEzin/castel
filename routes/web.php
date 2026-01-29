@@ -5,6 +5,7 @@ use App\Models\About;
 use App\Models\Home;
 use App\Models\Servico;
 use App\Models\Empreendimento;
+use App\Models\TipoImovel;
 
 Route::get('/', function () {
     $home = Home::first();
@@ -74,7 +75,8 @@ Route::get('/sobre', function () {
 
 Route::get('/empreendimentos', function () {
     $empreendimentos = Empreendimento::all();
-    return view('empreendimentos', ['empreendimentos' => $empreendimentos]);
+    $tiposImoveis = TipoImovel::all();
+    return view('empreendimentos', ['empreendimentos' => $empreendimentos, 'tiposImoveis' => $tiposImoveis]);
 })->name('empreendimentos');
 
 Route::get('/reservas', function () {
