@@ -53,7 +53,7 @@
             </div>
 
             <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;">
-              <button class="btn" type="submit" data-send="whatsapp">Enviar por WhatsApp</button>F
+              <button class="btn" type="submit" data-send="whatsapp">Enviar por WhatsApp</button>
             </div>
 
             <p class="form-ok muted" hidden>Mensagem preparada! Abrimos seu app para envio.</p>
