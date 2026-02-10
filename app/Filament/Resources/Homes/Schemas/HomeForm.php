@@ -33,7 +33,7 @@ class HomeForm
 
                 TextInput::make('video_capa')
                     ->label('URL do Vídeo de Capa')
-                    ->placeholder('https://exemplo.com/video.mp4 ou /media/video.mp4')
+                    ->placeholder('Link do video do youtube.')
                     ->helperText('Cole a URL do vídeo de fundo da página inicial. Deixe vazio para usar o vídeo padrão.'),
             ]);
     }
